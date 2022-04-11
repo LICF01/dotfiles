@@ -268,6 +268,7 @@ return require("packer").startup(function()
 	})
 
 	-- git
+	use("https://github.com/tpope/vim-fugitive")
 	use({
 		"lewis6991/gitsigns.nvim",
 		requires = {
