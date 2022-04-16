@@ -192,6 +192,13 @@ wk.register({
 				noremap = true,
 				silent = true,
 			},
+			i = {
+				[[<cmd>lua require('telescope.builtin').lsp_implementations()<cr>]],
+				"Goto or list implementation",
+				mode = "n",
+				noremap = true,
+				silent = true,
+			},
 			r = {
 				[[<cmd>lua require('telescope.builtin').lsp_references()<cr>]],
 				"List LSP references",
@@ -199,8 +206,15 @@ wk.register({
 				noremap = true,
 				silent = true,
 			},
+			s = {
+				[[<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>]],
+				"List document symbols in the current buffer",
+				mode = "n",
+				noremap = true,
+				silent = true,
+			},
 			x = {
-				[[<cmd>lua require('telescope.builtin').lsp_definitions()<cr>]],
+				[[<cmd>lua require('telescope.builtin').diagnostics()<cr>]],
 				"List diagnostics",
 				mode = "n",
 				noremap = true,
@@ -242,13 +256,57 @@ wk.register({
 
 	["<leader>g"] = {
 		name = "+git",
-		s = { ":Neotree float git_status<cr>", "Status", noremap = true, silent = true },
+		t = {
+			name = "+Telescope",
+			b = {
+				[[<cmd>lua require('telescope.builtin').git_branches()<cr>]],
+				"List all branches with log preview",
+				mode = "n",
+				noremap = true,
+				silent = true,
+			},
+			c = {
+				[[<cmd>lua require('telescope.builtin').git_commits()<cr>]],
+				"List git commits with diff preview",
+				mode = "n",
+				noremap = true,
+				silent = true,
+			},
+			C = {
+				[[<cmd>lua require('telescope.builtin').git_bcommits()<cr>]],
+				"List git buffer's commits with diff preview",
+				mode = "n",
+				noremap = true,
+				silent = true,
+			},
+			s = {
+				[[<cmd>lua require('telescope.builtin').git_status()<cr>]],
+				"List current changes per file",
+				mode = "n",
+				noremap = true,
+				silent = true,
+			},
+			S = {
+				[[<cmd>lua require('telescope.builtin').git_status()<cr>]],
+				"List stash items in current repository",
+				mode = "n",
+				noremap = true,
+				silent = true,
+			},
+		},
 	},
 	["<leader>o"] = {
 		name = "+Open",
 		t = {
 			":Neotree filesystem reveal left<cr>",
 			"Project tree",
+			mode = "n",
+			noremap = true,
+			silent = true,
+		},
+		l = {
+			"<cmd>lua _lazygit_toggle()<CR>",
+			"Lazygit",
 			mode = "n",
 			noremap = true,
 			silent = true,
