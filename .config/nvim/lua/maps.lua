@@ -388,19 +388,19 @@ wk.register({
 	["<leader>x"] = {
 		name = "diagnostics",
 		x = {
-			"<cmd>Trouble<cr>",
+			"<cmd>TroubleToggle<cr>",
 			"Toggle Trouble",
 			noremap = true,
 			silent = true,
 		},
 		w = {
-			"<cmd>Trouble lsp_workspace_diagnostics<cr>",
+			"<cmd>Trouble workspace_diagnostics<cr>",
 			"Workspace diagnostics",
 			noremap = true,
 			silent = true,
 		},
 		d = {
-			"<cmd>Trouble lsp_document_diagnostics<cr>",
+			"<cmd>Trouble document_diagnostics<cr>",
 			"Document diagnostics",
 			noremap = true,
 			silent = true,
