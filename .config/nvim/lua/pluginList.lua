@@ -182,14 +182,14 @@ return require("packer").startup(function()
 		end,
 	})
 
-	-- use({
-	-- 	"norcalli/nvim-colorizer.lua",
-	-- 	event = "BufRead",
-	-- 	config = function()
-	-- 		require("plugins.colorizer")
-	-- 		vim.cmd("ColorizerReloadAllBuffers")
-	-- 	end,
-	-- })
+	use({
+		"norcalli/nvim-colorizer.lua",
+		event = "BufRead",
+		config = function()
+			require("plugins.colorizer")
+			-- vim.cmd("ColorizerReloadAllBuffers")
+		end,
+	})
 
 	use("ap/vim-css-color")
 
@@ -327,7 +327,7 @@ return require("packer").startup(function()
 	use({
 		"folke/trouble.nvim",
 		config = function()
-			require("trouble").setup({})
+			require("plugins.trouble").config()
 		end,
 	})
 	use({
