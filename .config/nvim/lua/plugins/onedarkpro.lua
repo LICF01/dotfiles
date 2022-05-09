@@ -13,12 +13,12 @@ onedarkpro.setup({
 	},
 	colors = {
 		onedark = {
+			bg = "#1E2127",
 			-- bg = "#282C34",
-			bg = "#21242b",
+			-- bg = "#21242b",
 		},
 	},
 	hlgroups = {
-		NvimTreeOpenedFile = { fg = "#ffffff" },
 		NeoTreeFileNameOpened = { fg = "#ffffff" },
 		IndentLine = { fg = "#4A4D54" },
 	},
