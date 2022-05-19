@@ -327,15 +327,15 @@ return require("packer").startup(function()
 	use({
 		"folke/trouble.nvim",
 		config = function()
-			require("plugins.trouble").config()
+			require("plugins.trouble")
 		end,
 	})
-	use({
-		"kristijanhusak/orgmode.nvim",
-		config = function()
-			require("orgmode").setup({})
-		end,
-	})
+	-- use({
+	-- 	"kristijanhusak/orgmode.nvim",
+	-- 	config = function()
+	-- 		require("orgmode").setup({})
+	-- 	end,
+	-- })
 
 	use({ "ray-x/lsp_signature.nvim" })
 
