@@ -1,7 +1,24 @@
 local ts_config = require("nvim-treesitter.configs")
 
 ts_config.setup({
-	ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+	-- A list of parser names, or "all"
+	ensure_installed = {
+		"c",
+		"lua",
+		"html",
+		"css",
+		"javascript",
+		"jsdoc",
+		"json",
+		"latex",
+		"regex",
+		"scss",
+		"tsx",
+		"typescript",
+		"vim",
+		"vue",
+		"graphql",
+	},
 	highlight = {
 		enable = true, -- false will disable the whole extension
 		use_languagetree = true,
