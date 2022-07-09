@@ -324,6 +324,7 @@ return require("packer").startup(function()
 			require("plugins.which-key").config()
 		end,
 	})
+
 	use({
 		"folke/trouble.nvim",
 		config = function()
