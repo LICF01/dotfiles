@@ -73,6 +73,14 @@ map("n", "<leader>8", ":BufferLineGoToBuffer 8<CR>", opts)
 map("n", "<leader>9", ":BufferLineGoToBuffer 9<CR>", opts)
 
 wk.register({
+	["<leader>"] = {
+		name = "+manage",
+		['.'] = {
+			[[<cmd>lua require('telescope.builtin').find_files()<cr>]],
+			-- ":Telescope find_files<cr>",
+			"File",
+		},
+	},
 	["<leader>P"] = {
 		name = "+manage",
 		s = { ":PackerSync<CR>", "Sync plugins", noremap = false },
