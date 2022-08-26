@@ -1,15 +1,9 @@
-## some env varables
-export CAGO="$HOME/.cargo/bin:$PATH"
-export PATH="$HOME/.node_modules_global/bin:/home/lucas/.cargo/bin:$PATH"
 
-alias vim="nvim"
-alias nv="$HOME/.local/bin/nv.sh"
-alias neovide="$HOME/Apps/neovide/neovide"
-alias dcrt="$HOME/work/Datacapture/dc-react"
-alias dcdc="$HOME/work/Datacapture/dc-docker-config"
+setopt autocd
 
-
-### Added by Zinit's installer
+#######################################################################
+# Zinit's Installer
+#
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
     print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
     command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
@@ -22,6 +16,7 @@ source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
+
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
 zinit light-mode for \
@@ -32,8 +27,9 @@ zinit light-mode for \
 
 ### End of Zinit's installer chunk
 
-
-# Pluggin list
+#######################################################################
+# Zinit Pluggin list
+#
 # zinit light spaceship-prompt/spaceship-prompt
 
 #auto-ls
@@ -46,13 +42,27 @@ zinit load zsh-users/zsh-completions
 zinit load zsh-users/zsh-syntax-highlighting
 
 
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.cfg/.git --work-tree=$HOME'
+######################################################################
+# Propmt
+#
+eval "$(starship init zsh)"
+
+######################################################################
+# Aliases
+#
+alias vim="nvim"
+alias nv="$HOME/.local/bin/nv.sh"
+alias neovide="$HOME/Apps/neovide/neovide"
+alias emacs="emacsclient -c -a 'emacs'"
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/.git --work-tree=$HOME'
+alias luamake=/home/lucas/lua-language-server/3rd/luamake/luamake
+
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="$PATH:/opt/mssql-tools/bin"
 
-alias luamake=/home/lucas/lua-language-server/3rd/luamake/luamake
 
 
-
-eval "$(starship init zsh)"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
