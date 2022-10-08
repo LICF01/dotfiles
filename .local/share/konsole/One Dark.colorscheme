@@ -1,11 +1,11 @@
 [Background]
-Color=30,33,39
+Color=33,36,43
 
 [BackgroundFaint]
-Color=30,33,39
+Color=33,36,43
 
 [BackgroundIntense]
-Color=30,33,39
+Color=33,36,43
 
 [Color0]
 Color=40,44,52
@@ -89,8 +89,11 @@ Color=92,99,112
 Color=130,137,151
 
 [General]
+Anchor=0.5,0.5
 Blur=false
 ColorRandomization=false
 Description=One Dark
+FillStyle=Tile
 Opacity=1
 Wallpaper=
+WallpaperOpacity=1
