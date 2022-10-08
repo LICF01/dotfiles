@@ -18,7 +18,7 @@ onedarkpro.setup({
 			-- bg = "#21242b",
 		},
 	},
-	hlgroups = {
+	highlights = {
 		NeoTreeFileNameOpened = { fg = "#ffffff" },
 		IndentLine = { fg = "#4A4D54" },
 	},
