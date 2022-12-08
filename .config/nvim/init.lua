@@ -1,11 +1,16 @@
-local g = vim.g
-local o = vim.o -- For the globals options
-local w = vim.wo -- For the window local options
-local b = vim.bo -- For the buffer local options
-
---require 'utils'
-require("pluginList")
-require("plugins.lsp")
-require("settings")
-require("maps")
-require("highlights")
+require("plugins-setup")
+require("core.options")
+require("core.keymaps")
+require("core.colorscheme")
+require("plugins.comment")
+require("plugins.nvim-tree")
+require("plugins.lualine")
+require("plugins.telescope")
+require("plugins.nvim-cmp")
+require("plugins.lsp.mason")
+require("plugins.lsp.lspsaga")
+require("plugins.lsp.lspconfig")
+require("plugins.lsp.null-ls")
+require("plugins.autopairs")
+require("plugins.treesitter")
+require("plugins.gitsigns")

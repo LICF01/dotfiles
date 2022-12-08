@@ -1,56 +1,27 @@
-local cmd = vim.cmd
-local telescope = require("telescope")
+-- import telescope plugin safely
+local telescope_setup, telescope = pcall(require, "telescope")
+if not telescope_setup then
+  return
+end
 
-telescope.load_extension("media_files")
-telescope.load_extension("project")
-telescope.load_extension("emoji")
--- telescope.load_extension("lsp_handlers")
+-- import telescope actions safely
+local actions_setup, actions = pcall(require, "telescope.actions")
+if not actions_setup then
+  return
+end
 
+-- configure telescope
 telescope.setup({
-	defaults = {
-		prompt_prefix = "   ",
-		selection_caret = "  ",
-		entry_prefix = "  ",
-		sorting_strategy = "ascending",
-		layout_config = {
-			horizontal = {
-				prompt_position = "top",
-				preview_width = 0.55,
-				results_width = 0.8,
-			},
-			vertical = {
-				mirror = false,
-			},
-			width = 0.87,
-			height = 0.80,
-			preview_cutoff = 120,
-		},
-
-		mappings = {
-			--[[ i = {
-                    ["<C-j>"] = actions.preview_scrolling_down,
-                    ["<C-k>"] = actions.preview_scrolling_up
-                },
-                n = {
-                    ["jk"] = actions.close,
-                    ["q"] = actions.close,
-                    ["<C-c>"] = actions.close,
-                    ["<C-j>"] = actions.preview_scrolling_down,
-                    ["<C-k>"] = actions.preview_scrolling_up
-                } ]]
-		},
-	},
-	extensions = {
-		media_files = {
-			-- filetypes whitelist
-			-- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
-			filetypes = { "png", "webp", "jpg", "jpeg" },
-			find_cmd = "rg", -- find command (defaults to `fd`)
-		},
-		-- lsp_handlers = {
-		-- 	code_action = {
-		-- 		telescope = require("telescope.themes").get_dropdown({}),
-		-- 	},
-		-- },
-	},
+  -- configure custom mappings
+  defaults = {
+    mappings = {
+      i = {
+        ["<C-k>"] = actions.move_selection_previous, -- move to prev result
+        ["<C-j>"] = actions.move_selection_next, -- move to next result
+        ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist, -- send selected to quickfixlist
+      },
+    },
+  },
 })
+
+telescope.load_extension("fzf")
