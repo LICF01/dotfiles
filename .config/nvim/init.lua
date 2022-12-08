@@ -1,7 +1,12 @@
+-- Plugins setup
 require("plugins-setup")
+
+-- Core configs
 require("core.options")
 require("core.keymaps")
 require("core.colorscheme")
+
+-- Plugin configs
 require("plugins.comment")
 require("plugins.nvim-tree")
 require("plugins.lualine")
