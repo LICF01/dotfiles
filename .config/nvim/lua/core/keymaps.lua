@@ -1,3 +1,5 @@
+local wk = require("which-key")
+
 vim.g.mapleader = " "
 
 local keymap = vim.keymap
@@ -22,12 +24,6 @@ keymap.set("n", "<C-j>", "<C-w>j")
 keymap.set("n", "<C-k>", "<C-w>k")
 keymap.set("n", "<C-l>", "<C-w>l")
 
--- window management
-keymap.set("n", "<leader>sv", "<C-w>v") -- split window vertically
-keymap.set("n", "<leader>sh", "<C-w>s") -- split window horizontally
-keymap.set("n", "<leader>se", "<C-w>=") -- make split windows equal width & height
-keymap.set("n", "<leader>sx", ":close<CR>") -- close current split window
-
 -- Window Resize
 keymap.set("n", "<C-Up>", ":resize +2<CR>")
 keymap.set("n", "<C-Down>", ":resize -2<CR>")
@@ -48,25 +44,126 @@ keymap.set("v", ">", ">gv")
 keymap.set("v", "<A-j>", ":m .+1<CR>==")
 keymap.set("v", "<A-k>", ":m .-2<CR>==")
 
--- Plugin keymaps
--- vim-maximizer
-keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>") -- toggle split window maximization
-
--- nvim-tree
-keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>") -- toggle file explorer
-
--- telescope
-keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
-keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>") -- find string in current working directory as you type
-keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>") -- find string under cursor in current working directory
-keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>") -- list open buffers in current neovim instance
-keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help tags
-
--- telescope git commands
-keymap.set("n", "<leader>gc", "<cmd>Telescope git_commits<cr>") -- list all git commits (use <cr> to checkout) ["gc" for git commits]
-keymap.set("n", "<leader>gfc", "<cmd>Telescope git_bcommits<cr>") -- list git commits for current file/buffer (use <cr> to checkout) ["gfc" for git file commits]
-keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>") -- list git branches (use <cr> to checkout) ["gb" for git branch]
-keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current changes per file with diff preview ["gs" for git status]
-
 -- restart lsp server
 keymap.set("n", "<leader>rs", ":LspRestart<CR>") -- mapping to restart lsp if necessary
+
+local vmappings = {}
+local mappings = {
+	b = {
+		name = "Buffers",
+		f = { "<cmd>Telescope buffers previewer=false<cr>", "Find" },
+	},
+	p = {
+		name = "Packer",
+		s = { "<cmd>PackerSync<cr>", "Sync" },
+		S = { "<cmd>PackerStatus<cr>", "Status" },
+		u = { "<cmd>PackerUpdate<cr>", "Update" },
+	},
+	g = {
+		name = "Git",
+		g = { "<cmd>lua require 'lvim.core.terminal'.lazygit_toggle()<cr>", "Lazygit" },
+		j = { "<cmd>lua require 'gitsigns'.next_hunk({navigation_message = false})<cr>", "Next Hunk" },
+		k = { "<cmd>lua require 'gitsigns'.prev_hunk({navigation_message = false})<cr>", "Prev Hunk" },
+		l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
+		p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
+		r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
+		R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
+		s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
+		u = {
+			"<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
+			"Undo Stage Hunk",
+		},
+		o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
+		b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+		c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
+		C = {
+			"<cmd>Telescope git_bcommits<cr>",
+			"Checkout commit(for current file)",
+		},
+		d = {
+			"<cmd>Gitsigns diffthis HEAD<cr>",
+			"Git Diff",
+		},
+	},
+	l = {
+		name = "LSP",
+		a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+		d = { "<cmd>Telescope diagnostics bufnr=0 theme=get_ivy<cr>", "Buffer Diagnostics" },
+		w = { "<cmd>Telescope diagnostics<cr>", "Diagnostics" },
+		i = { "<cmd>LspInfo<cr>", "Info" },
+		I = { "<cmd>Mason<cr>", "Mason Info" },
+		j = {
+			vim.diagnostic.goto_next,
+			"Next Diagnostic",
+		},
+		k = {
+			vim.diagnostic.goto_prev,
+			"Prev Diagnostic",
+		},
+		q = { vim.diagnostic.setloclist, "Quickfix" },
+		r = { vim.lsp.buf.rename, "Rename" },
+		s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
+		S = {
+			"<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
+			"Workspace Symbols",
+		},
+	},
+	s = {
+		name = "Search",
+		b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+		c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
+		f = { "<cmd>Telescope find_files<cr>", "Find File" },
+		h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
+		H = { "<cmd>Telescope highlights<cr>", "Find highlight groups" },
+		M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
+		r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+		R = { "<cmd>Telescope registers<cr>", "Registers" },
+		t = { "<cmd>Telescope live_grep<c-r>", "Text" },
+		k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
+		C = { "<cmd>Telescope commands<cr>", "Commands" },
+		p = {
+			"<cmd>lua require('telescope.builtin').colorscheme({enable_preview = true})<cr>",
+			"Colorscheme with Preview",
+		},
+	},
+	t = {
+		name = "Toggle",
+		e = { ":NvimTreeToggle<CR>", "File explorer" },
+		t = {
+			name = "Terminal",
+		},
+	},
+	T = {
+		name = "Treesitter",
+		i = { ":TSConfigInfo<cr>", "Info" },
+	},
+	w = {
+		name = "Window",
+		v = { "<C-w>v", "Split window vertically" },
+		h = { "<C-w>h", "Split window horizontally" },
+		m = { ":MaximizerToggle<CR>", "Toggle window maximizer" },
+		x = { ":close<CR>", "Close current window" },
+		["="] = { "<C-w>=", "Reset windows width and height" },
+	},
+}
+
+local opts = {
+	mode = "n", -- NORMAL mode
+	prefix = "<leader>",
+	buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+	silent = true, -- use `silent` when creating keymaps
+	noremap = true, -- use `noremap` when creating keymaps
+	nowait = true, -- use `nowait` when creating keymaps
+}
+
+local vopts = {
+	mode = "v", -- VISUAL mode
+	prefix = "<leader>",
+	buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+	silent = true, -- use `silent` when creating keymaps
+	noremap = true, -- use `noremap` when creating keymaps
+	nowait = true, -- use `nowait` when creating keymaps
+}
+
+wk.register(mappings, opts)
+wk.register(vmappings, vopts)
