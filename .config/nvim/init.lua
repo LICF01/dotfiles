@@ -8,7 +8,8 @@ require("core.colorscheme")
 
 -- Plugin configs
 require("plugins.comment")
-require("plugins.nvim-tree")
+-- require("plugins.nvim-tree")
+require("plugins.neo-tree")
 require("plugins.lualine")
 require("plugins.telescope")
 require("plugins.nvim-cmp")
