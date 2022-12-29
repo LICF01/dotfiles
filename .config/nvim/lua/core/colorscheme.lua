@@ -18,6 +18,9 @@ onedarkpro.setup({
 		strings = "NONE",
 		variables = "NONE",
 	},
+	plugins = {
+		all = true,
+	},
 })
 
 onedarkpro.load()

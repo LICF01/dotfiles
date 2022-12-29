@@ -16,6 +16,8 @@ opt.wrap = false
 -- search settings
 opt.ignorecase = true
 opt.smartcase = true
+opt.hlsearch = false
+opt.incsearch = true
 
 -- cursor line
 opt.cursorline = true
@@ -35,16 +37,10 @@ opt.clipboard:append("unnamedplus")
 opt.splitright = true
 opt.splitbelow = true
 
-opt.iskeyword:append("-")
+-- treat words joined with - as one word
+-- opt.iskeyword:append("-")
 
+-- scroll
+opt.scrolloff = 8
 
-
-
-
-
-
-
-
-
-
-
+opt.updatetime = 50
