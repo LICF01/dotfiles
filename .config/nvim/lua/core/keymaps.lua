@@ -1,8 +1,8 @@
 local wk = require("which-key")
-
 vim.g.mapleader = " "
 
 local keymap = vim.keymap
+local opts = { noremap = true, silent = true }
 
 -- use jk to exit insert mode
 keymap.set("i", "jk", "<ESC>")
@@ -35,17 +35,58 @@ keymap.set("n", "<leader>tx", ":tabclose<CR>") -- close current tab
 keymap.set("n", "<leader>tn", ":tabn<CR>") --  go to next tab
 keymap.set("n", "<leader>tp", ":tabp<CR>") --  go to previous tab
 
+-- keeps cursor in position
+keymap.set("n", "J", "mzJ`z")
+
+-- keeps curosr in the middel when jumping search results
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+
+-- keeps cursor in the midde of the screen
+keymap.set("n", "<C-d>", "<C-d>zz")
+keymap.set("n", "<C-u>", "<C-u>zz")
+
+-- replace the current word
+-- keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
 -- Visual --
 -- Stay in indent mode
 keymap.set("v", "<", "<gv")
 keymap.set("v", ">", ">gv")
 
 -- Move text up and down
-keymap.set("v", "<A-j>", ":m .+1<CR>==")
-keymap.set("v", "<A-k>", ":m .-2<CR>==")
+keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- restart lsp server
 keymap.set("n", "<leader>rs", ":LspRestart<CR>") -- mapping to restart lsp if necessary
+
+-- Move to previous/next
+keymap.set("n", "<A-,>", "<Cmd>BufferPrevious<CR>", opts)
+keymap.set("n", "<A-.>", "<Cmd>BufferNext<CR>", opts)
+-- Goto buffer in position...
+keymap.set("n", "<A-1>", "<Cmd>BufferGoto 1<CR>", opts)
+keymap.set("n", "<A-2>", "<Cmd>BufferGoto 2<CR>", opts)
+keymap.set("n", "<A-3>", "<Cmd>BufferGoto 3<CR>", opts)
+keymap.set("n", "<A-4>", "<Cmd>BufferGoto 4<CR>", opts)
+keymap.set("n", "<A-5>", "<Cmd>BufferGoto 5<CR>", opts)
+keymap.set("n", "<A-6>", "<Cmd>BufferGoto 6<CR>", opts)
+keymap.set("n", "<A-7>", "<Cmd>BufferGoto 7<CR>", opts)
+keymap.set("n", "<A-8>", "<Cmd>BufferGoto 8<CR>", opts)
+keymap.set("n", "<A-9>", "<Cmd>BufferGoto 9<CR>", opts)
+keymap.set("n", "<A-0>", "<Cmd>BufferLast<CR>", opts)
+-- Close buffer
+keymap.set("n", "<A-c>", "<Cmd>BufferClose<CR>", opts)
+keymap.set("n", "<A-a>", "<Cmd>BufferCloseAllButCurrent<CR>", opts)
+-- Wipeout buffer
+--                 :BufferWipeout
+-- Close commands
+--                 :BufferCloseAllButPinned
+--                 :BufferCloseAllButCurrentOrPinned
+--                 :BufferCloseBuffersLeft
+--                 :BufferCloseBuffersRight
+-- Magic buffer-picking mode
+keymap.set("n", "<C-p>", "<Cmd>BufferPick<CR>", opts)
 
 local vmappings = {}
 local mappings = {
@@ -87,7 +128,8 @@ local mappings = {
 	},
 	l = {
 		name = "LSP",
-		a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+		a = { "<cmd>Lspsaga code_action<cr>", "Code Action" },
+		f = { "<cmd>Lspsaga lsp_finder<CR>", "Finder" },
 		d = { "<cmd>Telescope diagnostics bufnr=0 theme=get_ivy<cr>", "Buffer Diagnostics" },
 		w = { "<cmd>Telescope diagnostics<cr>", "Diagnostics" },
 		i = { "<cmd>LspInfo<cr>", "Info" },
@@ -110,15 +152,15 @@ local mappings = {
 	},
 	s = {
 		name = "Search",
-		b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+		b = { "<cmd>Telescope buffers<cr>", "Buffers" },
 		c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
-		f = { "<cmd>Telescope find_files<cr>", "Find File" },
-		h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
-		H = { "<cmd>Telescope highlights<cr>", "Find highlight groups" },
+		f = { "<cmd>Telescope find_files<cr>", "File" },
+		h = { "<cmd>Telescope help_tags<cr>", "Help" },
+		H = { "<cmd>Telescope highlights<cr>", "highlight groups" },
 		M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
 		r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
 		R = { "<cmd>Telescope registers<cr>", "Registers" },
-		t = { "<cmd>Telescope live_grep<c-r>", "Text" },
+		t = { "<cmd>Telescope live_grep<cr>", "Text" },
 		k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
 		C = { "<cmd>Telescope commands<cr>", "Commands" },
 		p = {
