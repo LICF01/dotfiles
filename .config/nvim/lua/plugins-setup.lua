@@ -107,6 +107,12 @@ return packer.startup(function(use)
 	-- keybindings helpers
 	use("folke/which-key.nvim")
 
+	-- tab bar
+	use({ "romgrk/barbar.nvim", wants = "nvim-web-devicons" })
+
+	-- blank lines
+	use("lukas-reineke/indent-blankline.nvim")
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if packer_bootstrap then
