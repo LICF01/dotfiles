@@ -171,7 +171,7 @@ local mappings = {
 	t = {
 		name = "Toggle",
 		-- e = { ":NvimTreeToggle<CR>", "File explorer" },
-		e = { ":Neotree<CR>", "File explorer" },
+		e = { ":Neotree toggle reveal<CR>", "File explorer" },
 		t = {
 			name = "Terminal",
 		},
