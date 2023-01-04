@@ -33,7 +33,9 @@ return packer.startup(function(use)
 	use("nvim-lua/plenary.nvim")
 
 	-- My plugins here
+	-- theme
 	use("olimorris/onedarkpro.nvim")
+	use("rmehri01/onenord.nvim")
 
 	use("szw/vim-maximizer")
 
@@ -117,7 +119,8 @@ return packer.startup(function(use)
 	use("folke/which-key.nvim")
 
 	-- tab bar
-	use({ "romgrk/barbar.nvim", wants = "nvim-web-devicons" })
+	-- use({ "romgrk/barbar.nvim", wants = "nvim-web-devicons" })
+	use({ "akinsho/bufferline.nvim", tag = "v3.*", requires = "nvim-tree/nvim-web-devicons" })
 
 	-- blank lines
 	use("lukas-reineke/indent-blankline.nvim")

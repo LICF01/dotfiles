@@ -62,31 +62,25 @@ keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 keymap.set("n", "<leader>rs", ":LspRestart<CR>") -- mapping to restart lsp if necessary
 
 -- Move to previous/next
-keymap.set("n", "<A-,>", "<Cmd>BufferPrevious<CR>", opts)
-keymap.set("n", "<A-.>", "<Cmd>BufferNext<CR>", opts)
+keymap.set("n", "<A-,>", "<Cmd>BufferLineCyclePrev<CR>", opts)
+keymap.set("n", "<A-.>", "<Cmd>BufferLineCycleNext<CR>", opts)
 -- Goto buffer in position...
-keymap.set("n", "<A-1>", "<Cmd>BufferGoto 1<CR>", opts)
-keymap.set("n", "<A-2>", "<Cmd>BufferGoto 2<CR>", opts)
-keymap.set("n", "<A-3>", "<Cmd>BufferGoto 3<CR>", opts)
-keymap.set("n", "<A-4>", "<Cmd>BufferGoto 4<CR>", opts)
-keymap.set("n", "<A-5>", "<Cmd>BufferGoto 5<CR>", opts)
-keymap.set("n", "<A-6>", "<Cmd>BufferGoto 6<CR>", opts)
-keymap.set("n", "<A-7>", "<Cmd>BufferGoto 7<CR>", opts)
-keymap.set("n", "<A-8>", "<Cmd>BufferGoto 8<CR>", opts)
-keymap.set("n", "<A-9>", "<Cmd>BufferGoto 9<CR>", opts)
-keymap.set("n", "<A-0>", "<Cmd>BufferLast<CR>", opts)
+keymap.set("n", "<A-1>", "<Cmd>BufferLineGoToBuffer 1<CR>", opts)
+keymap.set("n", "<A-2>", "<Cmd>BufferLineGoToBuffer 2<CR>", opts)
+keymap.set("n", "<A-3>", "<Cmd>BufferLineGoToBuffer 3<CR>", opts)
+keymap.set("n", "<A-4>", "<Cmd>BufferLineGoToBuffer 4<CR>", opts)
+keymap.set("n", "<A-5>", "<Cmd>BufferLineGoToBuffer 5<CR>", opts)
+keymap.set("n", "<A-6>", "<Cmd>BufferLineGoToBuffer 6<CR>", opts)
+keymap.set("n", "<A-7>", "<Cmd>BufferLineGoToBuffer 7<CR>", opts)
+keymap.set("n", "<A-8>", "<Cmd>BufferLineGoToBuffer 8<CR>", opts)
+keymap.set("n", "<A-9>", "<Cmd>BufferLineGoToBuffer 9<CR>", opts)
+keymap.set("n", "<A-0>", "<Cmd>BufferLineLast<CR>", opts)
 -- Close buffer
-keymap.set("n", "<A-c>", "<Cmd>BufferClose<CR>", opts)
-keymap.set("n", "<A-a>", "<Cmd>BufferCloseAllButCurrent<CR>", opts)
--- Wipeout buffer
---                 :BufferWipeout
--- Close commands
---                 :BufferCloseAllButPinned
---                 :BufferCloseAllButCurrentOrPinned
---                 :BufferCloseBuffersLeft
---                 :BufferCloseBuffersRight
+keymap.set("n", "<A-c>", "<Cmd>BufferLineClose<CR>", opts)
+keymap.set("n", "<A-a>", "<Cmd>BufferLineCloseAllButCurrent<CR>", opts)
+
 -- Magic buffer-picking mode
-keymap.set("n", "<C-p>", "<Cmd>BufferPick<CR>", opts)
+keymap.set("n", "<A-p>", "<Cmd>BufferLinePick<CR>", opts)
 
 local vmappings = {}
 local mappings = {

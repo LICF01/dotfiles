@@ -3,11 +3,16 @@ if not status then
 	return
 end
 
+local status, onenord = pcall(require, "onenord")
+if not status then
+	return
+end
+
 onedarkpro.setup({
 	theme = "onedark",
 	caching = true,
 	options = {
-		transparency = true,
+		transparency = false,
 		cursorline = true,
 		terminal_colors = true,
 	},
@@ -18,9 +23,15 @@ onedarkpro.setup({
 		strings = "NONE",
 		variables = "NONE",
 	},
-	plugins = {
-		all = true,
+})
+
+onenord.setup({
+	disable = {
+		background = true, -- Disable setting the background color
+		cursorline = true, -- Disable the cursorline
+		eob_lines = true, -- Hide the end-of-buffer lines
 	},
 })
 
 onedarkpro.load()
+-- onenord.load()
