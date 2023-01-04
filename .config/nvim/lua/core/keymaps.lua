@@ -164,6 +164,7 @@ local mappings = {
 	},
 	t = {
 		name = "Toggle",
+		o = { "<cmd>AerialToggle!<CR>", "Code outline" },
 		-- e = { ":NvimTreeToggle<CR>", "File explorer" },
 		e = { ":Neotree toggle reveal<CR>", "File explorer" },
 		t = {

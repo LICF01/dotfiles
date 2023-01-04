@@ -44,3 +44,4 @@ opt.splitbelow = true
 opt.scrolloff = 8
 
 opt.updatetime = 50
+
