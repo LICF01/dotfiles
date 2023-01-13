@@ -10,6 +10,8 @@ if not actions_setup then
 	return
 end
 
+local trouble = require("trouble.providers.telescope")
+
 -- configure telescope
 telescope.setup({
 	-- configure custom mappings
@@ -24,7 +26,9 @@ telescope.setup({
 				["<C-k>"] = actions.move_selection_previous, -- move to prev result
 				["<C-j>"] = actions.move_selection_next, -- move to next result
 				["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist, -- send selected to quickfixlist
+				["<c-t>"] = trouble.open_with_trouble, -- open results in trouble
 			},
+			n = { ["<c-t>"] = trouble.open_with_trouble }, -- show results in trouble
 		},
 	},
 	pickers = {
