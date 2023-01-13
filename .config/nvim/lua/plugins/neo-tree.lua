@@ -19,3 +19,8 @@ neotree.setup({
 	enable_diagnostics = true,
 	sort_case_insensitive = false, -- used when sorting files and directories in the tree
 })
+
+vim.cmd([[
+    " hi NeoTreeNormal guibg=#22262D
+    " hi NeoTreeNormalNC guibg=#000
+  ]])

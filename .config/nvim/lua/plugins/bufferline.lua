@@ -7,7 +7,7 @@ bufferline.setup({
 	options = {
 		indicator = {
 			-- icon = "▎", -- this should be omitted if indicator style is not 'icon'
-			style = "underline", --"icon" | "underline" | "none",
+			style = "none", --"icon" | "underline" | "none",
 		},
 		diagnostic = false,
 		offsets = {
@@ -18,7 +18,7 @@ bufferline.setup({
 				separator = true,
 			},
 		},
-		separator_style = "slant", -- "slant" | "thick" | "thin" | { "any", "any" },
+		separator_style = "thick", -- "slant" | "thick" | "thin" | { "any", "any" },
 	},
 	highlights = {
 		fill = {

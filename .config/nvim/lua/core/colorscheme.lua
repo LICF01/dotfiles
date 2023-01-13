@@ -11,6 +11,11 @@ end
 onedarkpro.setup({
 	theme = "onedark",
 	caching = true,
+	-- colors = {
+	-- 	onedark = {
+	-- 		bg = "#1E2127", -- yellow
+	-- 	},
+	-- },
 	options = {
 		transparency = false,
 		cursorline = true,
