@@ -36,6 +36,7 @@ return packer.startup(function(use)
 	-- theme
 	use("olimorris/onedarkpro.nvim")
 	use("rmehri01/onenord.nvim")
+	use("rebelot/kanagawa.nvim")
 
 	use("szw/vim-maximizer")
 
