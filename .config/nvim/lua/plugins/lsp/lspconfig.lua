@@ -118,6 +118,7 @@ end
 lspconfig["html"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
+	filetypes = { "html", "astro" },
 })
 
 -- configure typescript server with plugin
@@ -166,6 +167,11 @@ lspconfig["sumneko_lua"].setup({
 			},
 		},
 	},
+})
+
+lspconfig["astro"].setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
 })
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
