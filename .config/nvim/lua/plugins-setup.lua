@@ -37,6 +37,7 @@ return packer.startup(function(use)
 	use("olimorris/onedarkpro.nvim")
 	use("rmehri01/onenord.nvim")
 	use("rebelot/kanagawa.nvim")
+	use("AlexvZyl/nordic.nvim")
 
 	use("szw/vim-maximizer")
 

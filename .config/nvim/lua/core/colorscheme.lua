@@ -13,6 +13,11 @@ if not status then
 	return
 end
 
+local nordicStatus, nordic = pcall(require, "nordic")
+if not status then
+	return
+end
+
 onedarkpro.setup({
 	theme = "onedark",
 	caching = true,
@@ -22,7 +27,7 @@ onedarkpro.setup({
 	-- 	},
 	-- },
 	options = {
-		transparency = false,
+		transparency = true,
 		cursorline = true,
 		terminal_colors = true,
 	},
@@ -69,3 +74,4 @@ kanagawa.setup({
 onedarkpro.load()
 -- onenord.load()
 -- kanagawa.load()
+-- nordic.load()
