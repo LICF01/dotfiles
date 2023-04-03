@@ -18,6 +18,11 @@ neotree.setup({
 	enable_git_status = true,
 	enable_diagnostics = true,
 	sort_case_insensitive = false, -- used when sorting files and directories in the tree
+	filesystem = {
+		follow_current_file = true,
+		hijack_netrw_behavior = "open_current",
+		use_libuv_file_watcher = true,
+	},
 })
 
 vim.cmd([[
