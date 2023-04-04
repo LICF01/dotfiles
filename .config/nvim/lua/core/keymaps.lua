@@ -75,18 +75,14 @@ keymap.set("n", "<A-7>", "<Cmd>BufferLineGoToBuffer 7<CR>", opts)
 keymap.set("n", "<A-8>", "<Cmd>BufferLineGoToBuffer 8<CR>", opts)
 keymap.set("n", "<A-9>", "<Cmd>BufferLineGoToBuffer 9<CR>", opts)
 keymap.set("n", "<A-0>", "<Cmd>BufferLineLast<CR>", opts)
--- Close buffer
-keymap.set("n", "<A-c>", "<Cmd>BufferLineClose<CR>", opts)
-keymap.set("n", "<A-a>", "<Cmd>BufferLineCloseAllButCurrent<CR>", opts)
-
--- Magic buffer-picking mode
-keymap.set("n", "<A-p>", "<Cmd>BufferLinePick<CR>", opts)
 
 local vmappings = {}
 local mappings = {
 	b = {
 		name = "Buffers",
 		f = { "<cmd>Telescope buffers previewer=false<cr>", "Find" },
+		c = { "<cmd>BufferLinePickClose<cr>", "Pick and close" },
+		p = { "<cmd>BufferLinePick<cr>", "Pick" },
 	},
 	p = {
 		name = "Packer",
