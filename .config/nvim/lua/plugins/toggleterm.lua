@@ -1,16 +1,11 @@
--- import toggleterm plugin safely
-local setup, toggleterm = pcall(require, "toggleterm")
-if not setup then
-	return
-end
-
-local config = {
-	open_mapping = [[<c-\>]],
-	direction = "float",
-	float_opts = {
-		border = "curved",
+return {
+	"akinsho/toggleterm.nvim",
+	version = "*",
+	opts = {
+		open_mapping = [[<c-\>]],
+		direction = "float",
+		float_opts = {
+			border = "curved",
+		},
 	},
 }
-
--- configure/enable gitsigns
-toggleterm.setup(config)

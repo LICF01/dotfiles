@@ -1,41 +1,57 @@
--- import telescope plugin safely
-local telescope_setup, telescope = pcall(require, "telescope")
-if not telescope_setup then
-	return
-end
+return {
+	"nvim-telescope/telescope.nvim",
+	cmd = "Telescope",
+	version = false, -- telescope did only one release, so use HEAD for now
 
--- import telescope actions safely
-local actions_setup, actions = pcall(require, "telescope.actions")
-if not actions_setup then
-	return
-end
+	opts = {
+		defaults = {
+			prompt_prefix = " ",
+			selection_caret = " ",
 
-local trouble = require("trouble.providers.telescope")
-
--- configure telescope
-telescope.setup({
-	-- configure custom mappings
-	defaults = {
-		sorting_strategy = "ascending",
-		layout_strategy = "horizontal",
-		layout_config = {
-			prompt_position = "top",
-		},
-		mappings = {
-			i = {
-				["<C-k>"] = actions.move_selection_previous, -- move to prev result
-				["<C-j>"] = actions.move_selection_next, -- move to next result
-				["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist, -- send selected to quickfixlist
-				["<c-t>"] = trouble.open_with_trouble, -- open results in trouble
+			sorting_strategy = "ascending",
+			layout_strategy = "horizontal",
+			layout_config = {
+				prompt_position = "top",
 			},
-			n = { ["<c-t>"] = trouble.open_with_trouble }, -- show results in trouble
+			mappings = {
+				i = {
+					["<c-t>"] = function(...)
+						return require("trouble.providers.telescope").open_with_trouble(...)
+					end,
+					["<a-t>"] = function(...)
+						return require("trouble.providers.telescope").open_selected_with_trouble(...)
+					end,
+					["<a-i>"] = function()
+						Util.telescope("find_files", { no_ignore = true })()
+					end,
+					["<a-h>"] = function()
+						Util.telescope("find_files", { hidden = true })()
+					end,
+					["<C-Down>"] = function(...)
+						return require("telescope.actions").cycle_history_next(...)
+					end,
+					["<C-Up>"] = function(...)
+						return require("telescope.actions").cycle_history_prev(...)
+					end,
+					["<C-f>"] = function(...)
+						return require("telescope.actions").preview_scrolling_down(...)
+					end,
+					["<C-b>"] = function(...)
+						return require("telescope.actions").preview_scrolling_up(...)
+					end,
+				},
+				n = {
+					["q"] = function(...)
+						return require("telescope.actions").close(...)
+					end,
+				},
+			},
 		},
-	},
-	pickers = {
-		find_files = {
-			hidden = true,
-		},
-	},
-})
 
-telescope.load_extension("fzf")
+		pickers = {
+			find_files = {
+				hidden = true,
+			},
+		},
+	},
+}
