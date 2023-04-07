@@ -1,3 +1,5 @@
+vim.g.mapleader = " "
+
 -- Plugins setup
 require("plugins-setup")
 
