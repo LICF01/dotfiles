@@ -7,18 +7,19 @@ return {
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
 		"saadparwaiz1/cmp_luasnip",
+		-- snippets
+		"L3MON4D3/LuaSnip", -- snippet engine
+		"rafamadriz/friendly-snippets", -- useful snippets
 	},
 
 	opts = function()
+		require("luasnip/loaders/from_vscode").lazy_load()
 		local luasnip = require("luasnip")
 		local cmp = require("cmp")
 		local merge = function(a, b)
 			return vim.tbl_deep_extend("force", {}, a, b)
 		end
 		return {
-			completion = {
-				completeopt = "menu,menuone,noinsert",
-			},
 			snippet = {
 				expand = function(args)
 					luasnip.lsp_expand(args.body)
@@ -76,6 +77,12 @@ return {
 			preselect = cmp.PreselectMode.Item,
 			completion = {
 				completeopt = "menu,menuone,noinsert",
+			},
+			window = {
+				documentation = merge(cmp.config.window.bordered(), {
+					max_height = 15,
+					max_width = 60,
+				}),
 			},
 			formatting = {
 				fields = { "kind", "abbr", "menu" },
