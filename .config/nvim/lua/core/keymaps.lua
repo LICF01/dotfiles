@@ -1,5 +1,4 @@
 local wk = require("which-key")
-vim.g.mapleader = " "
 
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
@@ -83,6 +82,38 @@ local mappings = {
 		f = { "<cmd>Telescope buffers previewer=false<cr>", "Find" },
 		c = { "<cmd>BufferLinePickClose<cr>", "Pick and close" },
 		p = { "<cmd>BufferLinePick<cr>", "Pick" },
+	},
+	c = {
+		name = "Code",
+		a = { "<cmd>Lspsaga code_action<cr>", "Definition" },
+		d = { "<cmd>Telescope lsp_definitions<cr>", "Definition" },
+		D = { "<cmd>Telescope lsp_type_definitons<cr>", "Type definition" },
+		h = { "<cmd>Lspsaga hover_doc<CR>", "Documentation" },
+		i = { "<cmd>Telescope lsp_implementations<cr>", "Implementation" },
+		o = { "<cmd>LSoutlineToggle<CR>", "Open Outline sidebar" },
+		r = { "<cmd>Telescope lsp_references<cr>", "References" },
+		R = { "<cmd>Lspsaga rename<cr>", "Rename symbol" },
+		s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document symbols" },
+		S = { "<cmd>Telescope lsp_workspace_symbols<cr>", "Workspace symbols" },
+		t = {
+			name = "Typescript ",
+			r = { ":TypescriptRenameFile<CR>", "Rename file and update imports" },
+			i = { ":TypescriptOrganizeImports<CR>", "Organize imports" },
+			x = { ":TypescriptRemoveUnused<CR>", "Remove unused variables" },
+		},
+		x = {
+			name = "Diagnostics",
+			c = { "<cmd>Lspsaga show_cursor_diagnostics<cr>", "show cursor diagnostics" },
+			d = { "<cmd>TroubleToggle document_diagnostics<cr>", "Show document diagnostics" },
+			k = { "<cmd>Lspsaga diagnostic_jump_prev<CR>", "Prev diagnostic" },
+			j = { "<cmd>Lspsaga diagnostic_jump_next<CR>", "Next diagnostic" },
+			l = { "<cmd>Lspsaga show_line_diagnostics<cr>", "show current line diagnostics" },
+			L = { "<cmd>TroubleToggle loclist<cr>", "Show loclist" },
+			q = { "<cmd>TroubleToggle quickfix<cr>", "Show quickfix objects" },
+			x = { "<cmd>TroubleToggle<cr>", "Show diagnostics" },
+			X = { "<cmd>Telescope diagnostics<cr>", "List all diagnostics (Telescope)" },
+			w = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Show workspace diagnostics" },
+		},
 	},
 	p = {
 		name = "Packer",
@@ -203,3 +234,17 @@ local vopts = {
 
 wk.register(mappings, opts)
 wk.register(vmappings, vopts)
+wk.register({
+	f = { "<cmd>Lspsaga lsp_finder<CR>", "Lsp finder" },
+	d = { "<cmd>Lspsaga peek_definition<CR>", "Show definition" },
+	D = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Show declaration" },
+	i = { "<cmd>Telescope lsp_implementations<cr>", "Show implementation" },
+	r = { "<cmd>Telescope lsp_references<cr>", "Find references" },
+}, {
+	prefix = "g",
+	mode = "n", -- NORMAL mode
+	buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+	silent = true, -- use `silent` when creating keymaps
+	noremap = true, -- use `noremap` when creating keymaps
+	nowait = true, -- use `nowait` when creating keymaps}
+})
