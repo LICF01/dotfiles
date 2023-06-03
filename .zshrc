@@ -58,9 +58,17 @@ alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/.git --work-tree=$HOME'
 alias luamake=/home/lucas/lua-language-server/3rd/luamake/luamake
 
 
+export EDITOR=/usr/bin/nvim
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="$PATH:/opt/mssql-tools/bin"
 
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH="$HOME/.tmuxifier/bin:$PATH"
+
+eval "$(tmuxifier init -)"
 
 
 export NVM_DIR="$HOME/.nvm"
