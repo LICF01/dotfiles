@@ -1,0 +1,4 @@
+theme = tokyonight
+gtk-titlebar = false 
+window-padding-x = 5
+
