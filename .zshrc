@@ -29,11 +29,6 @@ zinit light-mode for \
 
 #######################################################################
 # Zinit Pluggin list
-#
-# zinit light spaceship-prompt/spaceship-prompt
-
-#auto-ls
-zinit ice wait'0' lucid
 
 zinit load zsh-users/zsh-autosuggestions
 zinit load zsh-users/zsh-completions
@@ -43,7 +38,7 @@ zinit load zsh-users/zsh-syntax-highlighting
 
 
 ######################################################################
-# Propmt
+# Prompt
 #
 eval "$(starship init zsh)"
 
@@ -51,11 +46,18 @@ eval "$(starship init zsh)"
 # Aliases
 #
 alias vim="nvim"
-alias nv="$HOME/.local/bin/nv.sh"
-alias neovide="$HOME/Apps/neovide/neovide"
+alias nv="$HOME/.local/bin/nv.sh" alias neovide="$HOME/Apps/neovide/neovide"
 alias emacs="emacsclient -c -a 'emacs'"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/.git --work-tree=$HOME'
 alias luamake=/home/lucas/lua-language-server/3rd/luamake/luamake
+alias gpt="$HOME/apps/gpt-cli/gpt.py"
+alias work="cd $HOME/work && tmuxp load ."
+
+alias ls='lsd'
+alias l='ls -l'
+alias la='ls -a'
+alias lla='ls -la'
+alias lt='ls --tree'
 
 
 export EDITOR=/usr/bin/nvim
@@ -66,11 +68,48 @@ export PATH="$PATH:/opt/mssql-tools/bin"
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
-export PATH="$HOME/.tmuxifier/bin:$PATH"
-
-eval "$(tmuxifier init -)"
-
+export CAPACITOR_ANDROID_STUDIO_PATH=/snap/android-studio/current/bin/studio.sh
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+PATH="$HOME/.local/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/home/lucas/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+
+# fzf
+export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND='fd --type=d --strip-cwd-prefix --hidden --follow --exclude .git'
+
+# Use fd (https://github.com/sharkdp/fd) for listing path candidates.
+# - The first argument to the function ($1) is the base path to start traversal
+# - See the source code (completion.{bash,zsh}) for the details.
+_fzf_compgen_path() {
+  fd --hidden --follow --exclude ".git" . "$1"
+}
+
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+  fd --type d --hidden --follow --exclude ".git" . "$1"
+}
+
+# fzf end
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
+
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+
+
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
