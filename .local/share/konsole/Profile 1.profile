@@ -1,5 +1,5 @@
 [Appearance]
-ColorScheme=One Dark
+ColorScheme=TokyoNightBlueKonsole
 DimmValue=8
 Font=JetBrainsMono Nerd Font,14,-1,5,50,0,0,0,0,0
 TabColor=33,36,43
