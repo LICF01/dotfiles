@@ -1,6 +1,7 @@
 
 setopt autocd
 
+
 #######################################################################
 # Zinit's Installer
 #
@@ -25,6 +26,10 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-patch-dl \
     zdharma-continuum/zinit-annex-rust
 
+
+# removes the zi alias so it doesn't conflict with zoxide
+zinit ice atload'unalias zi'
+
 ### End of Zinit's installer chunk
 
 #######################################################################
@@ -35,6 +40,8 @@ zinit load zsh-users/zsh-completions
 
 # must be the last one
 zinit load zsh-users/zsh-syntax-highlighting
+
+
 
 
 ######################################################################
@@ -63,6 +70,8 @@ alias lt='ls --tree'
 export EDITOR=/usr/bin/nvim
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
 export PATH="$PATH:/opt/mssql-tools/bin"
 
 export ANDROID_HOME=$HOME/Android/Sdk
@@ -85,9 +94,12 @@ esac
 
 
 # fzf
+export FZF_DEFAULT_OPTS="--height 50% --layout=default --border --color=hl:#2dd4bf"
+
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND='fd --type=d --strip-cwd-prefix --hidden --follow --exclude .git'
+
 
 # Use fd (https://github.com/sharkdp/fd) for listing path candidates.
 # - The first argument to the function ($1) is the base path to start traversal
@@ -105,7 +117,9 @@ _fzf_compgen_dir() {
 
 
 # Load Angular CLI autocompletion.
-source <(ng completion script)
+if command -v ng &> /dev/null; then
+  source <(ng completion script)
+fi
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
@@ -113,3 +127,23 @@ source <(fzf --zsh)
 
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# fnm
+FNM_PATH="/home/lucas/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/home/lucas/.local/share/fnm:$PATH"
+  eval "`fnm env`"
+fi
+
+# Changes the working directory when yazi exits
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
+
+eval "$(zoxide init zsh)"
