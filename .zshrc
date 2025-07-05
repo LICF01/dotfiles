@@ -67,7 +67,7 @@ alias lla='ls -la'
 alias lt='ls --tree'
 
 
-export EDITOR=/usr/bin/nvim
+ set -gx EDITOR nvim 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -95,7 +95,6 @@ esac
 
 # fzf
 export FZF_DEFAULT_OPTS="--height 50% --layout=default --border --color=hl:#2dd4bf"
-
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND='fd --type=d --strip-cwd-prefix --hidden --follow --exclude .git'
@@ -124,9 +123,21 @@ fi
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 
-
-
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# Changes the working directory when yazi exits
+function y() {
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+  yazi "$@" --cwd-file="$tmp"
+  if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+	  builtin cd -- "$cwd"
+  fi
+  rm -f -- "$tmp"
+}
+
+
+eval "$(zoxide init zsh)"
+
 
 # fnm
 FNM_PATH="/home/lucas/.local/share/fnm"
@@ -135,15 +146,5 @@ if [ -d "$FNM_PATH" ]; then
   eval "`fnm env`"
 fi
 
-# Changes the working directory when yazi exits
-function y() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		builtin cd -- "$cwd"
-	fi
-	rm -f -- "$tmp"
-}
 
-
-eval "$(zoxide init zsh)"
+eval "$(fnm env --use-on-cd --shell zsh)"
