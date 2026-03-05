@@ -1,0 +1,165 @@
+{
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.bracketPairColorization.enabled": true,
+  "editor.codeActionsOnSave": {
+    "source.addMissingImports": "explicit",
+    "source.organizeImports": "never"
+  },
+  "editor.fontFamily": "JetBrainsMono Nerd Font",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 16,
+  "editor.formatOnSave": true,
+  "editor.inlineSuggest.enabled": true,
+  "editor.lineNumbers": "relative",
+  "editor.linkedEditing": true,
+  // "editor.stickyScroll.enabled": true,
+  "editor.suggest.insertMode": "replace",
+  "extensions.autoUpdate": "onlyEnabledExtensions",
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1,
+    "vscodevim.vim": 1
+  },
+  "git.autofetch": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "sortJSON.orderOverride": ["name", "version", "description"],
+  "sortJSON.orderUnderride": ["dependencies", "devDependencies"],
+  "sync.gist": "80897f63120d88477025450270d6e212",
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "terminal.integrated.profiles.windows": {
+    "Command Prompt": {
+      "args": [],
+      "icon": "terminal-cmd",
+      "path": [
+        "${env:windir}\\Sysnative\\cmd.exe",
+        "${env:windir}\\System32\\cmd.exe"
+      ]
+    },
+    "Git Bash": {
+      "source": "Git Bash"
+    },
+    "PowerShell": {
+      "icon": "terminal-powershell",
+      "source": "PowerShell"
+    },
+    "Ubuntu-20.04 (WSL)": {
+      "args": ["-d", "Ubuntu-20.04"],
+      "path": "C:\\Windows\\System32\\wsl.exe"
+    }
+  },
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "vim.foldfix": true,
+  "vim.highlightedyank.color": "rgba(230, 97, 89, 0.7)",
+  "vim.highlightedyank.enable": true,
+  "vim.highlightedyank.textColor": "white",
+  "vim.hlsearch": true,
+  "vim.incsearch": true,
+  "vim.insertModeKeyBindings": [
+    {
+      "after": ["<Esc>"],
+      "before": ["j", "k"]
+    }
+  ],
+  "vim.leader": "<space>",
+  "vim.handleKeys": {
+    "<C-a>": false,
+    "<C-f>": false
+  },
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<Esc>"],
+      "when": ["editorFocus"],
+      "commands": [":nohl"],
+      "silent": true
+    }
+  ],
+  "vim.overrideCopy": true,
+  "vim.useSystemClipboard": true,
+  "vim.smartRelativeLine": true,
+  "vim.surround": true,
+  "window.menuBarVisibility": "toggle",
+  "workbench.colorTheme": "Tokyo Night",
+  "workbench.startupEditor": "none",
+  "zenMode.hideLineNumbers": false,
+  "window.restoreWindows": "none",
+  "prettier.documentSelectors": ["**/*.astro"],
+  "[astro]": {
+    // "editor.defaultFormatter": "astro-build.astro-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "diffEditor.ignoreTrimWhitespace": true,
+  "playwright.reuseBrowser": true,
+  "playwright.showTrace": false,
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": true,
+    "scminput": false
+  },
+  "diffEditor.renderSideBySide": false,
+  "files.associations": {
+    "*.mdoc": "markdown"
+  },
+  "sqltools.format": {
+    "reservedWordCase": "upper"
+  },
+  "[sql]": {
+    "editor.defaultFormatter": "ms-mssql.mssql"
+  },
+  "markdown-pdf.breaks": true,
+  "markdown-pdf.displayHeaderFooter": false,
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "gitlens.ai.model": "vscode",
+  "gitlens.ai.vscode.model": "copilot:gpt-4.1",
+  "mssql.connectionGroups": [
+    {
+      "name": "ROOT",
+      "id": "F42DD3E1-909F-4EFC-84D9-94BB3695615F"
+    }
+  ],
+  "mssql.connections": [
+    {
+      "authenticationType": "SqlLogin",
+      "connectTimeout": 30,
+      "applicationName": "vscode-mssql",
+      "applicationIntent": "ReadWrite",
+      "profileName": "",
+      "server": "localhost",
+      "trustServerCertificate": true,
+      "user": "sa",
+      "password": "",
+      "savePassword": true,
+      "groupId": "F42DD3E1-909F-4EFC-84D9-94BB3695615F",
+      "id": "A4F96CF1-8F74-47B8-9259-3C8D3C374B88",
+      "database": "",
+      "commandTimeout": 30,
+      "encrypt": "Mandatory",
+      "profileSource": 0
+    }
+  ],
+  "mssql.enableQueryHistoryCapture": false,
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "Prettier-SQL.keywordCase": "upper",
+  "Prettier-SQL.tabulateAlias": true,
+  "Prettier-SQL.SQLFlavourOverride": "transactsql",
+  "editor.largeFileOptimizations": false
+}
