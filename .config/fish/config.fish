@@ -29,14 +29,11 @@ alias l='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
 alias lt='ls --tree'
+alias lzd='lazydocker'
 
-
-# FZF config
-set -x FZF_DEFAULT_OPTS "--height 50% --layout=default --border --color=hl:#2dd4bf"
-set -x FZF_DEFAULT_COMMAND 'fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
-set -x FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
-set -x FZF_ALT_C_COMMAND 'fd --type=d --strip-cwd-prefix --hidden --follow --exclude .git'
-
+# Android Development config
+set -x ANDROID_HOME $HOME/Android/Sdk
+set -x PATH $PATH $ANDROID_HOME/emulator $ANDROID_HOME/platform-tools
 
 # Brew config
 eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv fish)
@@ -50,3 +47,16 @@ function y
 	end
 	rm -f -- "$tmp"
 end
+
+# FZF config
+set -x FZF_DEFAULT_OPTS " --height 50% --tmux center,50% --layout=default --border --color=hl:#2dd4bf"
+set -x FZF_DEFAULT_COMMAND 'fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
+set -x FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
+set -x FZF_ALT_C_COMMAND 'fd --type=d --strip-cwd-prefix --hidden --follow --exclude .git'
+
+# pnpm
+set -gx PNPM_HOME "/home/lucas/.local/share/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end

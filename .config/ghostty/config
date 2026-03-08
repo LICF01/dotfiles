@@ -1,13 +1,14 @@
+custom-shader = shaders/cursor_warp.glsl
 cursor-style = block
 font-family = JetBrainsMono NFM
 font-family-bold = JetBrainsMono NFM Bold
 font-family-italic = JetBrainsMono NFM Italic
-font-family-bold-italic= JetBrainsMono NFM Bold Italic
+font-family-bold-italic = JetBrainsMono NFM Bold Italic
 font-size = 14
 gtk-titlebar = false
 maximize = false
 shell-integration-features = no-cursor
-theme = tokyonight
+theme = TokyoNight Night
 window-decoration = server
 window-padding-x = 8
 window-padding-y = 8
