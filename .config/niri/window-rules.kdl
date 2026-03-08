@@ -1,0 +1,64 @@
+// Window rules let you adjust behavior for individual windows.
+// Find more information on the wiki:
+// https://yalter.github.io/niri/Configuration:-Window-Rules
+
+// Ask the clients to omit their client-side decorations if possible.
+prefer-no-csd
+
+window-rule {
+    open-maximized-to-edges true
+}
+
+window-rule {
+    match title="bluetui"
+    match title="btop"
+    match title="impala"
+    match title="lazydocker"
+    match title="wiremix"
+
+    open-floating true
+    open-focused true
+    open-maximized-to-edges false
+    default-column-width { proportion 0.75; }
+    default-window-height { proportion 0.75; }
+}
+
+
+// Example: block out two password managers from screen capture.
+// (This example rule is commented out with a "/-" in front.)
+window-rule {
+    match title=r#"^Bitwarden Vault"#
+
+    block-out-from "screen-capture"
+
+    // Use this instead if you want them visible on third-party screenshot tools.
+    // block-out-from "screencast"
+}
+
+// Open the Firefox picture-in-picture player as floating by default.
+window-rule {
+    // This app-id regular expression will work for both:
+    // - host Firefox (app-id is "firefox")
+    // - Flatpak Firefox (app-id is "org.mozilla.firefox")
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    open-floating true
+}
+
+// Settings for dialogs that should open floating.
+window-rule {
+    // match title="^(Open|Choose|Save|Sign in)(.*)$"
+    match app-id="(xdg-desktop-portal)(.*)"
+    match app-id="filepicker"
+    match app-id="org.freedesktop.impl.portal.desktop.kde"
+    match app-id="org.kde.ksecretd"
+    match title="^DevTools(.*)$"
+
+    default-column-width { proportion 0.5; }
+    default-window-height { proportion 0.6; }
+    open-floating true
+    open-fullscreen false
+    open-maximized-to-edges false
+    open-focused true
+}
+
+

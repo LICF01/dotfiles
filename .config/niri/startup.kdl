@@ -1,0 +1,16 @@
+
+// to open kwallet with login
+spawn-sh-at-startup "/usr/lib/pam_kwallet_init"
+
+// fix for Dolphin losing default applications 
+// run once  
+// $ kbuildsycoca6 --noincremental
+spawn-at-startup "kded6"
+
+// Clipboard history
+spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
+
+// dolphin file association
+spawn-at-startup "env" "XDG_MENU_PREFIX=plasma-" "kbuildsycoca6" 
+
+spawn-at-startup "kdeconnectd"

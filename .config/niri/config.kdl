@@ -1,0 +1,62 @@
+// This config is in the KDL format: https://kdl.dev
+// "/-" comments out the following node.
+// Check the wiki for a full description of the configuration:
+// https://yalter.github.io/niri/Configuration:-Introduction
+
+environment {
+  XDG_CURRENT_DESKTOP "niri"
+  ELECTRON_OZONE_PLATFORM_HINT "auto"
+
+
+  // The following has been moved to 
+  // ~/.config/environment.d/10-kde-on-niri.conf
+  // because some KDE apps starts before niri 
+
+  // QT_QPA_PLATFORM "wayland"
+  // QT_QPA_PLATFORMTHEME "qt6ct"
+  // QT_QPA_PLATFORMTHEME_QT6 "qt6ct"
+}
+
+layer-rule {
+    match namespace="^quickshell$"
+    place-within-backdrop true
+}
+
+layer-rule {
+    match namespace="dms:blurwallpaper"
+    place-within-backdrop true
+}
+
+
+hotkey-overlay {
+    // Disable the "Important Hotkeys" pop-up at startup.
+    skip-at-startup
+}
+
+
+// Path where screenshots are saved.
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+
+// You can also set this to null to disable saving screenshots to disk.
+// screenshot-path null
+
+animations {
+    // off
+    // Slow down all animations by this factor. Values below 1 speed them up instead.
+    slowdown 1.5
+}
+
+include "startup.kdl"
+include "outputs.kdl"
+include "inputs.kdl"
+include "window-rules.kdl"
+include "layout.kdl"
+include "binds.kdl"
+
+// dms-specific configuration and overrides
+include "dms/layout.kdl"
+include "dms/colors.kdl"
+include "dms/alttab.kdl"
+include "dms/binds.kdl"
+
