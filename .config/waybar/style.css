@@ -1,0 +1,184 @@
+/* @define-color tokyo-bg #1A1B26; */
+/* @define-color fg #CFD2D8; */
+/* @define-color primary #9ECE6A; */
+/* @define-color secondary  #7AA2F7; */
+/* @define-color secondary-alt #A4BBEF; */
+/* @define-color inactive #2a2f41; */
+/* @define-color warning #E0AF68; */
+/* @define-color error #F7768E; */
+
+@define-color bg #24283b;
+@define-color bg_dark #1f2335;
+@define-color bg_dark1 #1b1e2d;
+@define-color bg_highlight #292e42;
+@define-color blue #7aa2f7;
+@define-color blue0 #3d59a1;
+@define-color blue1 #2ac3de;
+@define-color blue2 #0db9d7;
+@define-color blue5 #89ddff;
+@define-color blue6 #b4f9f8;
+@define-color blue7 #394b70;
+@define-color comment #565f89;
+@define-color cyan #7dcfff;
+@define-color dark3 #545c7e;
+@define-color dark5 #737aa2;
+@define-color fg #c0caf5;
+@define-color fg_dark #a9b1d6;
+@define-color fg_gutter #3b4261;
+@define-color green #9ece6a;
+@define-color green1 #73daca;
+@define-color green2 #41a6b5;
+@define-color magenta #bb9af7;
+@define-color magenta2 #ff007c;
+@define-color orange #ff9e64;
+@define-color purple #9d7cd8;
+@define-color red #f7768e;
+@define-color red1 #db4b4b;
+@define-color teal #1abc9c;
+@define-color terminal_black #414868;
+@define-color yellow #e0af68;
+@define-color git_add #449dab;
+@define-color git_change #6183bb;
+@define-color git_delete #914c54;
+
+* {
+  border: none;
+  font-family: "JetBrainsMono NFP";
+  font-weight: bold;
+  font-size: 14px;
+}
+
+#waybar {
+  background: @bg_dark1;
+  color: @fg;
+}
+
+#workspaces {
+  padding-left: 10px;
+}
+
+#workspaces button {
+  transition: color 200ms ease-in-out;
+}
+#workspaces button.persistent {
+  color: @fg_dark;
+}
+#workspaces button.empty {
+  color: @dark3;
+}
+
+#workspaces button.selected,
+#workspaces button.active {
+  color: @green;
+}
+#workspaces button.urgent {
+  color: @yellow;
+}
+
+#workspaces button:hover {
+  color: @blue;
+  background: @bg_dark1;
+  box-shadow: none;
+  text-shadow: none;
+}
+
+#clock,
+#battery,
+#bluetooth,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network.wifi,
+#network.disconnected,
+#wireplumber,
+#tray,
+#window,
+#language,
+#power-profiles-daemon,
+#pulseaudio {
+  box-shadow: none;
+  text-shadow: none;
+  padding: 0 8px;
+}
+
+#clock,
+#workspaces,
+#window {
+  border-radius: 8px;
+  margin-right: 10px;
+}
+
+#cpu,
+#workspaces,
+#language {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+#memory,
+#power-profiles-daemon {
+  border-radius: 0;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding-right: 15px;
+}
+
+#cpu,
+#language {
+  padding-left: 15px;
+}
+
+#language {
+  margin-left: 10px;
+}
+
+#clock,
+#window {
+  padding: 0 15px;
+}
+
+#battery.charging {
+  color: @green;
+}
+
+#battery.full.charging {
+  color: @green;
+}
+
+#battery.full {
+  color: @green1;
+}
+
+#battery.warning {
+  color: @yellow;
+}
+
+#battery.warning:not(.charging) {
+  color: @orange;
+}
+
+#battery.critical {
+  color: @red;
+}
+
+#battery.critical:not(.charging) {
+  color: @red1;
+}
+
+#network.disconnected {
+  color: @dark5;
+}
+
+#bluetooth.on {
+  color: @blue;
+}
+
+#bluetooth.connected {
+  color: @blue;
+}
+
+#bluetooth.disabled {
+  color: @dark5;
+}

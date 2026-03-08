@@ -1,0 +1,11 @@
+
+font=JetBrainsMono NFM 10
+background-color=#1A1B26
+border-color=#A9B1D6
+border-size=2
+border-radius=8
+padding=16
+default-timeout=5000
+max-visible=5
+anchor=top-right
+
