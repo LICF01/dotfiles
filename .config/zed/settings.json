@@ -1,0 +1,115 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "agent": {
+    "default_profile": "write",
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "claude-sonnet-4.5",
+      "enable_thinking": true
+    },
+    "favorite_models": [],
+    "model_parameters": []
+  },
+  "session": {
+    "trust_all_worktrees": true
+  },
+  "vim_mode": true,
+  "vim": {
+    "use_system_clipboard": "always",
+  },
+  "icon_theme": "Warm Charmed Icons",
+  "ui_font_family": "JetBrainsMono Nerd Font",
+  "buffer_font_family": "JetBrainsMono Nerd Font",
+  "ui_font_size": 18,
+  "buffer_font_size": 18,
+  "buffer_font_weight": 600,
+  "agent_ui_font_size": 18,
+  "agent_buffer_font_size": 18,
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "Tokyo Night",
+  },
+  "theme_overrides": {
+    "Tokyo Night": {
+      "border": "#1a1b26",
+      "border.variant": "#1a1b26",
+      "title_bar.background": "#1a1b26",
+      "toolbar.background": "#1a1b26",
+      "panel.background": "#1a1b26",
+      "panel.focused_border": "#7aa2f7",
+      "syntax": {
+        "comment": {
+          "font_style": "italic",
+        },
+        "comment_doc": {
+          "font_style": "italic",
+        },
+      },
+    },
+  },
+  "title_bar": {
+    "show_onboarding_banner": false,
+    "show_project_items":  true,
+    "show_branch_name":  true,
+    "show_user_menu":  true,
+  },
+  "tab_bar": {
+    "show": false,
+  },
+  "toolbar": {
+    "quick_actions": false,
+  },
+  "status_bar": {
+    "experimental.show": false,
+  },
+  "project_panel": {
+    "dock": "left",
+    "default_width": 300,
+    "hide_root": true,
+    "auto_fold_dirs": false,
+    "starts_open": false,
+    "git_status": true,
+    "sticky_scroll": false,
+    "scrollbar": {
+      "show": "never",
+    },
+    "indent_guides": {
+      "show": "always",
+    },
+  },
+  "file_finder": {
+    "modal_max_width": "medium",
+  },
+  "gutter": {
+    "min_line_number_digits": 0,
+    "folds": false,
+    "runnables": false,
+  },
+  "indent_guides": {
+    "enabled": true,
+  },
+  "multi_cursor_modifier": "cmd_or_ctrl",
+  "seed_search_query_from_cursor": "never",
+  "tab_size": 2,
+  "auto_indent": "syntax_aware",
+  "auto_indent_on_paste": true,
+  "show_completions_on_input": true,
+  "inline_code_actions": true,
+  "hover_popover_enabled": false,
+  "format_on_save": "off",
+  "extend_comment_on_newline": false,
+  "horizontal_scroll_margin": 10,
+  "vertical_scroll_margin": 10,
+  "when_closing_with_no_tabs": "keep_window_open",
+  "close_on_file_delete": true,
+  "restore_on_file_reopen": false,
+  "restore_on_startup": "empty_tab",
+}
