@@ -11,7 +11,8 @@
     "bindings": {
       "space f f": "file_finder::Toggle",
       "ctrl-\\": "workspace::ActivatePreviousPane",
-      "space p r": "projects::OpenRecent"
+      "space p r": "projects::OpenRecent",
+      "space f e": "project_panel::ToggleFocus"
     }
   },
   {
@@ -66,19 +67,25 @@
   {
     "context": "ProjectPanel && not_editing",
     "bindings": {
-      "space f e": "project_panel::Toggle"
+      "space f e": "project_panel::Toggle",
+      "a": "project_panel::NewFile",
+      "d": ["project_panel::Delete", { "skip_prompt": false }],
+      "y": "project_panel::Copy",
+      "x": "project_panel::Cut",
+      "p": "workspace::CopyPath",
+      "P": "workspace::CopyRelativePath",
+      "r": "project_panel::Rename",
+      "f": "project_panel::RevealInFileManager",
+      "o": "workspace::OpenWithSystem"
     }
   },
   {
-    "context": "(ProjectPanel && not_editing) || (Editor && vim_mode == normal)",
+    "context": "(ProjectPanel && not_editing)  || Terminal || AgentPanel || (Editor && vim_mode == normal)",
     "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-k": "workspace::ActivatePaneUp",
       "ctrl-l": "workspace::ActivatePaneRight"
-    }
-  },
-  {
-    "context": "AgentPanel && not_editing",
-    "bindings": {
-      "ctrl-h": "workspace::ActivatePaneLeft"
     }
   },
   {
