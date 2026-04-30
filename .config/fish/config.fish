@@ -24,12 +24,15 @@ end
 
 alias vim="nvim"
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/.git --work-tree=$HOME"
-alias ls='lsd'
-alias l='ls -l'
-alias la='ls -a'
-alias lla='ls -la'
-alias lt='ls --tree'
 alias lzd='lazydocker'
+
+# ls replacement config
+set -x EZA_WITH_DEFAULTS 'eza --color=always --icons=always --group-directories-first'
+alias ls="$EZA_WITH_DEFAULTS"
+alias l="$EZA_WITH_DEFAULTS -l"
+alias la="$EZA_WITH_DEFAULTS -a"
+alias lla="$EZA_WITH_DEFAULTS -la"
+alias lt="$EZA_WITH_DEFAULTS -T"
 
 # Android Development config
 set -x ANDROID_HOME $HOME/Android/Sdk
@@ -48,11 +51,31 @@ function y
 	rm -f -- "$tmp"
 end
 
+set -x BAT_THEME "tokyonight_night"
+
 # FZF config
-set -x FZF_DEFAULT_OPTS " --height 50% --tmux center,50% --layout=default --border --color=hl:#2dd4bf"
+set -x FZF_DEFAULT_OPTS " --height 50% --tmux center,80%,80% --layout=reverse --border --color=hl:#2dd4bf"
 set -x FZF_DEFAULT_COMMAND 'fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
-set -x FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
-set -x FZF_ALT_C_COMMAND 'fd --type=d --strip-cwd-prefix --hidden --follow --exclude .git'
+set -x FZF_CTRL_T_OPTS "--preview 'bat --color=always --style=numbers --line-range :500 {}'"
+set -x FZF_ALT_C_OPTS "--preview '$EZA_WITH_DEFAULTS --tree {} | head -200'"
+
+# Advanced customization of fzf options via _fzf_comprun function
+# - The first argument to the function is the name of the command.
+# - You should make sure to pass the rest of the arguments ($@) to fzf.
+function _fzf_comprun
+    set command $argv[1]
+    set argv $argv[2..-1]
+    switch $command
+        case cd
+            fzf --preview "$EZA_WITH_DEFAULTS --tree {} | head -200" $argv
+        case export unset
+            fzf --preview "eval 'echo \$'{}" $argv
+        case ssh
+            fzf --preview "dig {}" $argv
+        case '*'
+            fzf --preview "bat -n --color=always {}" $argv
+    end
+end
 
 # pnpm
 set -gx PNPM_HOME "/home/lucas/.local/share/pnpm"
