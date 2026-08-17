@@ -83,3 +83,19 @@ if not string match -q -- $PNPM_HOME $PATH
   set -gx PATH "$PNPM_HOME" $PATH
 end
 # pnpm end
+
+# change directory after lazygit exits if the user has changed directories within lazygit
+function lg
+    set -g LAZYGIT_NEW_DIR_FILE (mktemp)
+    command lazygit $argv
+
+    if test -s $LAZYGIT_NEW_DIR_FILE
+        set -f new_dir (cat $LAZYGIT_NEW_DIR_FILE)
+        if test -n "$new_dir" -a "$new_dir" != (pwd)
+            cd $new_dir
+        end
+    end
+
+    rm -f $LAZYGIT_NEW_DIR_FILE
+    set -e LAZYGIT_NEW_DIR_FILE
+end
