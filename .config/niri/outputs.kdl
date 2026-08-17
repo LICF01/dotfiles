@@ -23,4 +23,5 @@ output "PNP(XMD) Mi TV 0x00000001" {
     mode "1920x1080@120.000"
     // mode "3840x2160@60.000"
     focus-at-startup
+    scale 1.5
 }

@@ -1,26 +1,42 @@
 binds {
+    // Core Noctalia binds
+    Mod+Space { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
+    Mod+C { spawn-sh "qs -c noctalia-shell ipc call launcher clipboard"; }
+    Mod+Shift+C { spawn-sh "qs -c noctalia-shell ipc call controlCenter toggle"; }
+    Mod+Shift+S { spawn-sh "qs -c noctalia-shell ipc call settings toggle"; }
+    Alt+Space { spawn-sh "qs -c noctalia-shell ipc call launcher command"; }
+
     // shows a list of important hotkeys.
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
+    // Super+RETURN hotkey-overlay-title="Open a Terminal" { spawn "ghostty"; }
     Super+RETURN hotkey-overlay-title="Open a Terminal" { spawn "kitty"; }
 
     Mod+A hotkey-overlay-title="Audio manager" { spawn "kitty" "--title=wiremix" "-e" "wiremix"; }
     Mod+B hotkey-overlay-title="Bluetooth manager" { spawn "kitty" "--title=bluetui" "-e" "bluetui"; }
-    Mod+N hotkey-overlay-title="Network manager" { spawn "kitty" "--title=impala" "-e" "impala"; }
-    Mod+T hotkey-overlay-title="Task manager" { spawn "kitty" "--title=btop" "-e" "btop"; }
     Mod+D hotkey-overlay-title="Lazydocker" { spawn "kitty" "--title=lazydocker" "-e" "sudo" "lazydocker"; }
     Mod+E hotkey-overlay-title="File explorer" { spawn "kitty" "--title=yazi" "-e" "yazi"; }
+    Mod+M hotkey-overlay-title="Mongo tui" { spawn "kitty" "--title=vi-mongo" "-e" "vi-mongo"; }
+    Mod+N hotkey-overlay-title="Network manager" { spawn "kitty" "--title=impala" "-e" "impala"; }
+    Mod+T hotkey-overlay-title="Task manager" { spawn "kitty" "--title=btop" "-e" "btop"; }
+
+   // Mod+A hotkey-overlay-title="Audio manager" { spawn "ghostty" "--title=wiremix" "-e" "wiremix"; }
+   // Mod+B hotkey-overlay-title="Bluetooth manager" { spawn "ghostty" "--title=bluetui" "-e" "bluetui"; }
+   // Mod+D hotkey-overlay-title="Lazydocker" { spawn "ghostty" "--title=lazydocker" "-e" "sudo" "lazydocker"; }
+   // Mod+E hotkey-overlay-title="File explorer" { spawn "ghostty" "--title=yazi" "-e" "yazi"; }
+   // Mod+M hotkey-overlay-title="Mongo tui" { spawn "ghostty" "--title=vi-mongo" "-e" "vi-mongo"; }
+   // Mod+N hotkey-overlay-title="Network manager" { spawn "ghostty" "--title=impala" "-e" "impala"; }
+   // Mod+T hotkey-overlay-title="Task manager" { spawn "ghostty" "--title=btop" "-e" "btop"; }
+
     Mod+Shift+E hotkey-overlay-title="GUI File Explorer" { spawn "dolphin" "-platformtheme" "kde";}
 
-    // Example volume keys mappings for PipeWire & WirePlumber.
-    // The allow-when-locked=true property makes them work even when the session is locked.
-    // Using spawn-sh allows to pass multiple arguments together with the command.
-    // "-l 1.0" limits the volume to 100%.
-    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
-    XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
-    XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+    // Audio & Brightness
+    XF86AudioRaiseVolume { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "increase"; }
+    XF86AudioLowerVolume { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "decrease"; }
+    XF86AudioMute { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "muteOutput"; }
+    XF86MonBrightnessUp { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "increase"; }
+    XF86MonBrightnessDown { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
 
     // Example media keys mapping using playerctl.
     // This will work with any MPRIS-enabled media player.
@@ -28,12 +44,6 @@ binds {
     XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }
     XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
     XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
-
-    // Example brightness key mappings for brightnessctl.
-    // You can use regular spawn with multiple arguments too (to avoid going through "sh"),
-    // but you need to manually put each argument in separate "" quotes.
-    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
 
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
     // You can also move the mouse into the top-left hot corner,
@@ -89,10 +99,6 @@ binds {
     Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
     Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
     Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
-
-    // Alternatively, there are commands to move just a single window:
-    // Mod+Shift+Ctrl+Left  { move-window-to-monitor-left; }
-    // ...
 
     // And you can also move a whole workspace to another monitor:
     // Mod+Shift+Ctrl+Left  { move-workspace-to-monitor-left; }
@@ -205,7 +211,7 @@ binds {
     // Makes the column "fill the rest of the space".
     Mod+Ctrl+F { expand-column-to-available-width; }
 
-    Mod+C { center-column; }
+    Mod+Alt+C { center-column; }
 
     // Center all fully visible columns on screen.
     Mod+Ctrl+C { center-visible-columns; }

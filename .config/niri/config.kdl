@@ -17,16 +17,13 @@ environment {
   // QT_QPA_PLATFORMTHEME_QT6 "qt6ct"
 }
 
+
 layer-rule {
+    //match namespace="dms:blurwallpaper"
     match namespace="^quickshell$"
+    match namespace="^noctalia-overview*"
     place-within-backdrop true
 }
-
-layer-rule {
-    match namespace="dms:blurwallpaper"
-    place-within-backdrop true
-}
-
 
 hotkey-overlay {
     // Disable the "Important Hotkeys" pop-up at startup.
@@ -54,9 +51,10 @@ include "window-rules.kdl"
 include "layout.kdl"
 include "binds.kdl"
 
+
 // dms-specific configuration and overrides
-include "dms/layout.kdl"
-include "dms/colors.kdl"
-include "dms/alttab.kdl"
-include "dms/binds.kdl"
+// include "dms/layout.kdl"
+// include "dms/colors.kdl"
+// include "dms/alttab.kdl"
+// include "dms/binds.kdl"
 

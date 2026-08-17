@@ -14,3 +14,5 @@ spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
 spawn-at-startup "env" "XDG_MENU_PREFIX=plasma-" "kbuildsycoca6" 
 
 spawn-at-startup "kdeconnectd"
+
+spawn-at-startup "qs" "-c" "noctalia-shell"
