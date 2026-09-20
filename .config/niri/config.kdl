@@ -17,12 +17,9 @@ environment {
   // QT_QPA_PLATFORMTHEME_QT6 "qt6ct"
 }
 
-
 layer-rule {
-    //match namespace="dms:blurwallpaper"
-    match namespace="^quickshell$"
-    match namespace="^noctalia-overview*"
-    place-within-backdrop true
+  match namespace="^noctalia-backdrop"
+  place-within-backdrop true
 }
 
 hotkey-overlay {
@@ -58,3 +55,5 @@ include "binds.kdl"
 // include "dms/alttab.kdl"
 // include "dms/binds.kdl"
 
+
+include "noctalia.kdl"

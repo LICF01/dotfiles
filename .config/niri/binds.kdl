@@ -1,10 +1,9 @@
 binds {
     // Core Noctalia binds
-    Mod+Space { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
-    Mod+C { spawn-sh "qs -c noctalia-shell ipc call launcher clipboard"; }
-    Mod+Shift+C { spawn-sh "qs -c noctalia-shell ipc call controlCenter toggle"; }
-    Mod+Shift+S { spawn-sh "qs -c noctalia-shell ipc call settings toggle"; }
-    Alt+Space { spawn-sh "qs -c noctalia-shell ipc call launcher command"; }
+    Mod+Space { spawn-sh "noctalia msg panel-toggle launcher"; }
+    Mod+C { spawn-sh "noctalia msg panel-toggle clipboard"; }
+    Mod+Shift+C { spawn-sh "noctalia msg panel-toggle control-center"; }
+    Mod+Shift+S { spawn-sh "noctalia msg settings-toggle"; }
 
     // shows a list of important hotkeys.
     Mod+Shift+Slash { show-hotkey-overlay; }
@@ -32,11 +31,11 @@ binds {
     Mod+Shift+E hotkey-overlay-title="GUI File Explorer" { spawn "dolphin" "-platformtheme" "kde";}
 
     // Audio & Brightness
-    XF86AudioRaiseVolume { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "increase"; }
-    XF86AudioLowerVolume { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "decrease"; }
-    XF86AudioMute { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "muteOutput"; }
-    XF86MonBrightnessUp { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "increase"; }
-    XF86MonBrightnessDown { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
+    XF86AudioRaiseVolume { spawn-sh "noctalia msg volume-up"; }
+    XF86AudioLowerVolume { spawn-sh "noctalia msg volume-down"; }
+    XF86AudioMute { spawn-sh "noctalia msg volume-mute"; }
+    XF86MonBrightnessUp { spawn-sh "noctalia msg brightness-up"; }
+    XF86MonBrightnessDown { spawn-sh "noctalia msg brightness-down"; }
 
     // Example media keys mapping using playerctl.
     // This will work with any MPRIS-enabled media player.

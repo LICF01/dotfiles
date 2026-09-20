@@ -15,4 +15,4 @@ spawn-at-startup "env" "XDG_MENU_PREFIX=plasma-" "kbuildsycoca6"
 
 spawn-at-startup "kdeconnectd"
 
-spawn-at-startup "qs" "-c" "noctalia-shell"
+spawn-at-startup "noctalia"
