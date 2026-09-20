@@ -31,7 +31,7 @@
   "editor.linkedEditing": true,
   // "editor.stickyScroll.enabled": true,
   "editor.suggest.insertMode": "replace",
-  "extensions.autoUpdate": "onlyEnabledExtensions",
+  "extensions.autoUpdate": "on",
   "extensions.experimental.affinity": {
     "asvetliakov.vscode-neovim": 1,
     "vscodevim.vim": 1
