@@ -26,6 +26,33 @@ alias vim="nvim"
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/.git --work-tree=$HOME"
 alias lzd='lazydocker'
 
+# Consolidate Noctalia settings into the dotfiles repo: exports the merged
+# config to config.toml, empties the GUI override buffer (through its
+# symlink), and commits everything under .config/noctalia.
+function noctalia-sync --description 'Export Noctalia config into dotfiles and commit'
+    set -l gflags --git-dir=$HOME/.dotfiles/.git --work-tree=$HOME -C $HOME
+    set -l target $HOME/.config/noctalia/config.toml
+    set -l tmp (mktemp)
+
+    # Export to a temp file first: a bare `>` would truncate config.toml
+    # even when the export fails because the config is broken.
+    if noctalia config export > $tmp
+        mv $tmp $target
+        chmod 644 $target # mktemp creates it 600
+        truncate -s 0 $HOME/.local/state/noctalia/settings.toml # empties through the symlink, keeps the link
+        command git $gflags add .config/noctalia
+        if command git $gflags diff --cached --quiet -- .config/noctalia
+            echo 'noctalia-sync: nothing to commit'
+        else
+            command git $gflags commit -m 'Update Noctalia config' -- .config/noctalia
+        end
+    else
+        echo 'noctalia-sync: export failed, nothing changed' >&2
+        rm -f $tmp
+        return 1
+    end
+end
+
 # ls replacement config
 set -x EZA_WITH_DEFAULTS 'eza --color=always --icons=always --group-directories-first'
 alias ls="$EZA_WITH_DEFAULTS"
