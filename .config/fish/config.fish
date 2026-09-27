@@ -26,6 +26,10 @@ alias vim="nvim"
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/.git --work-tree=$HOME"
 alias lzd='lazydocker'
 
+function dotlg --description 'lazygit for the dotfiles repo'
+    command lazygit --git-dir=$HOME/.dotfiles/.git --work-tree=$HOME $argv
+end
+
 # Consolidate Noctalia settings into the dotfiles repo: exports the merged
 # config to config.toml, empties the GUI override buffer (through its
 # symlink), and commits everything under .config/noctalia.
