@@ -16,7 +16,14 @@ end = [
     "session"
 ]
 margin_ends = 0
+radius = 0
+shadow = false
 start = [ "control-center", "workspaces", "media" ]
+widget_spacing = 10
+
+[control_center]
+sidebar = "full"
+sidebar_section = "full"
 
 [lockscreen_widgets]
 enabled = false
@@ -82,20 +89,35 @@ widget_order = [ "lockscreen-login-box@HDMI-A-1", "lockscreen-login-box@eDP-1" ]
         show_unlock_hint = true
         show_weather = true
 
+[shell]
+font_family = "JetBrainsMono Nerd Font"
+
+    [shell.panel]
+    clipboard_position = "auto"
+    open_near_click_clipboard = true
+    open_near_click_control_center = true
+
 [theme]
 builtin = "Tokyo-Night"
+
+    [theme.templates]
+    builtin_ids = [ "btop", "ghostty", "kitty", "niri", "starship" ]
+    community_ids = [ "brave", "zen-browser", "steam", "fzf", "tmux" ]
 
 [wallpaper]
 directory = "/home/lucas/Pictures/wallpapers"
 
     [wallpaper.default]
-    path = "/home/lucas/Pictures/wallpapers/wallhaven-yxm65g.png"
+    path = "/home/lucas/Pictures/wallpapers/TokyoNight/wallhaven-9mxz8k-tokyonight.png"
 
     [wallpaper.last]
-    path = "/home/lucas/Pictures/wallpapers/wallhaven-yxm65g.png"
+    path = "/home/lucas/Pictures/wallpapers/TokyoNight/wallhaven-9mxz8k-tokyonight.png"
+
+    [wallpaper.monitors.HDMI-A-1]
+    path = "/home/lucas/Pictures/wallpapers/TokyoNight/wallhaven-9mxz8k-tokyonight.png"
 
     [wallpaper.monitors.eDP-1]
-    path = "/home/lucas/Pictures/wallpapers/wallhaven-yxm65g.png"
+    path = "/home/lucas/Pictures/wallpapers/TokyoNight/wallhaven-9mxz8k-tokyonight.png"
 
 [widget.media]
 hide_when_no_media = true
