@@ -7,6 +7,8 @@ spawn-sh-at-startup "/usr/lib/pam_kwallet_init"
 // $ kbuildsycoca6 --noincremental
 spawn-at-startup "kded6"
 
+spawn-at-startup "xwayland-satellite"
+
 // Clipboard history
 spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
 
