@@ -56,7 +56,7 @@ alias vim="nvim"
 alias nv="$HOME/.local/bin/nv.sh" alias neovide="$HOME/Apps/neovide/neovide"
 alias emacs="emacsclient -c -a 'emacs'"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/.git --work-tree=$HOME'
-alias luamake=/home/lucas/lua-language-server/3rd/luamake/luamake
+alias luamake="$HOME/lua-language-server/3rd/luamake/luamake"
 alias gpt="$HOME/apps/gpt-cli/gpt.py"
 alias work="cd $HOME/work && tmuxp load ."
 
@@ -85,7 +85,7 @@ export NVM_DIR="$HOME/.nvm"
 PATH="$HOME/.local/bin:$PATH"
 
 # pnpm
-export PNPM_HOME="/home/lucas/.local/share/pnpm"
+export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
@@ -140,9 +140,9 @@ eval "$(zoxide init zsh)"
 
 
 # fnm
-FNM_PATH="/home/lucas/.local/share/fnm"
+FNM_PATH="$HOME/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
-  export PATH="/home/lucas/.local/share/fnm:$PATH"
+  export PATH="$FNM_PATH:$PATH"
   eval "`fnm env`"
 fi
 
