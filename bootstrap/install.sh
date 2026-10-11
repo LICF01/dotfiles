@@ -92,6 +92,24 @@ install_plugin_deps() {
   fi
 }
 
+install_tpack() {
+  echo "==> Installing tpack (tmux plugin manager, from the AUR)"
+  if ! command -v paru >/dev/null; then
+    if ask "paru is needed to install tpack-bin. Build paru from the AUR now? [Y/n]" y; then
+      local tmp
+      tmp=$(mktemp -d)
+      git clone https://aur.archlinux.org/paru.git "$tmp/paru"
+      (cd "$tmp/paru" && makepkg -si)
+    else
+      echo "    skipping tpack. Later: install paru, then: paru -S tpack-bin && tpack install"
+      return
+    fi
+  fi
+  paru -S --needed tpack-bin
+  # Headless install; if it can't run outside tmux, install from inside tmux.
+  tpack install || echo "    tpack install didn't run here: start tmux and press prefix + I"
+}
+
 install_aur() {
   if ! command -v paru >/dev/null; then
     echo "==> paru not found: skipping optional AUR package (vi-mongo, Mod+M)"
@@ -112,11 +130,8 @@ setup_shells() {
   fish -c 'curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher'
   fish -c 'fisher update'
 
-  if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
-    git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
-  fi
   echo "    zinit installs itself on first zsh launch."
-  echo "    In tmux, press Ctrl-S then I to install the plugins."
+  echo "    tmux plugins are managed by tpack (installed above)."
 }
 
 setup_noctalia() {
@@ -138,9 +153,16 @@ main() {
   deploy
   install_packages
   install_plugin_deps
+  install_tpack
   install_aur
   setup_shells
   setup_noctalia
+
+  if systemd-detect-virt --vm --quiet 2>/dev/null; then
+    echo
+    echo "Running in a VM: niri needs 3D acceleration (virt-manager: Video Virtio +"
+    echo "3D acceleration, Spice listen type None + OpenGL). See README: Running in a VM."
+  fi
 
   echo
   echo "Done. Start the session from a TTY with: niri-session"
