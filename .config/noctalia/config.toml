@@ -10,10 +10,11 @@ end = [
     "volume",
     "brightness",
     "battery",
-    "clipboard",
-    "notifications",
+    "widget",
+    "rate",
+    "widget_2",
     "clock",
-    "session"
+    "notifications"
 ]
 margin_ends = 0
 radius = 0
@@ -66,7 +67,7 @@ widget_order = [ "lockscreen-login-box@HDMI-A-1", "lockscreen-login-box@eDP-1" ]
     box_height = 196.0
     box_width = 810.0
     cx = 800.00006103515625
-    cy = 810.416748046875
+    cy = 817.99993896484375
     output = "eDP-1"
     placement_height = 1000.0
     placement_width = 1600.0
@@ -89,6 +90,26 @@ widget_order = [ "lockscreen-login-box@HDMI-A-1", "lockscreen-login-box@eDP-1" ]
         show_unlock_hint = true
         show_weather = true
 
+[plugin_settings."noctalia/translator"]
+target_lang = "es"
+
+[plugin_settings."vinioli/currency-exchange"]
+converter_open_near_click = true
+display_mode = "icon"
+target_currency = "PYG"
+
+[plugins]
+enabled = [
+    "yuuto/calculator",
+    "congluantran/calibre",
+    "oldirtty/color_picker",
+    "alexander/screen-toolkit",
+    "noctalia/screen_recorder",
+    "noctalia/translator",
+    "noctalia/wallhaven",
+    "vinioli/currency-exchange"
+]
+
 [shell]
 font_family = "JetBrainsMono Nerd Font"
 
@@ -99,10 +120,15 @@ font_family = "JetBrainsMono Nerd Font"
 
 [theme]
 builtin = "Tokyo-Night"
+community_palette = "Tokyo Night Moon"
+mode = "dark"
+shell_mode = "dark"
+source = "builtin"
+wallpaper_scheme = "m3-content"
 
     [theme.templates]
     builtin_ids = [ "btop", "ghostty", "kitty", "niri", "starship" ]
-    community_ids = [ "brave", "zen-browser", "steam", "fzf", "tmux" ]
+    community_ids = [ "claude-code", "brave", "zen-browser", "micro", "steam", "fzf", "tmux" ]
 
 [wallpaper]
 directory = "/home/lucas/Pictures/wallpapers"
@@ -121,3 +147,12 @@ directory = "/home/lucas/Pictures/wallpapers"
 
 [widget.media]
 hide_when_no_media = true
+
+[widget.rate]
+type = "vinioli/currency-exchange:rate"
+
+[widget.widget]
+type = "oldirtty/color_picker:widget"
+
+[widget.widget_2]
+type = "alexander/screen-toolkit:widget"
