@@ -1,0 +1,31 @@
+# Packages needed by the Noctalia plugins enabled in this setup.
+# Plugins themselves are not in the repo: Noctalia installs them from its sources
+# (see bootstrap/noctalia-plugins.sh). Lines starting with # are ignored.
+
+# oldirtty/color_picker (wraps hyprpicker, a generic Wayland color picker)
+hyprpicker
+
+# alexander/screen-toolkit (OCR, QR, palette, screenshots, recording)
+slurp
+tesseract
+tesseract-data-eng
+imagemagick
+zbar
+curl
+jq
+ffmpeg
+bc
+translate-shell
+wf-recorder
+
+# noctalia/screen_recorder (and screen-toolkit's recording backend)
+gpu-screen-recorder
+
+# congluantran/calibre
+calibre
+
+# Optional, not installed here:
+#   mpv                 screen-toolkit: play recordings
+#   wl-screenrec        screen-toolkit: preferred region recorder, AUR only
+#   (noctalia/translator, yuuto/calculator, noctalia/wallhaven,
+#    vinioli/currency-exchange need no packages)

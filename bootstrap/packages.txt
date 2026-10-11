@@ -1,0 +1,54 @@
+# Core packages for the niri + Noctalia setup (official repos).
+# Lines starting with # and blank lines are ignored by install.sh.
+
+# Session: compositor, shell, portals
+niri
+xwayland-satellite
+noctalia
+xdg-desktop-portal-gnome
+xdg-desktop-portal-kde
+
+# Terminals + font (every config uses JetBrainsMono NFM)
+kitty
+ghostty
+ttf-jetbrains-mono-nerd
+
+# Shells and CLI tools
+fish
+zsh
+starship
+tmux
+fnm
+pnpm
+fzf
+fd
+bat
+eza
+lsd
+zoxide
+ripgrep
+jq
+lazygit
+lazydocker
+btop
+yazi
+neovim
+
+# Keybind helpers (clipboard, media, screenshots, brightness)
+wl-clipboard
+cliphist
+playerctl
+libnotify
+grim
+slurp
+brightnessctl
+wlr-randr
+
+# TUI apps bound in niri (Mod+A, Mod+B, Mod+N)
+wiremix
+bluetui
+impala
+
+# Needed by the build step and by git-based installs
+git
+base-devel

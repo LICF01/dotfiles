@@ -1,0 +1,16 @@
+# KDE Plasma integration: optional, but recommended.
+# Gives you a Plasma fallback session, Dolphin (Mod+Shift+E), and the services
+# that .config/niri/startup.kdl launches (kded6, kdeconnectd, kwallet unlock).
+# install.sh asks before installing this list.
+
+dolphin
+kded
+kservice
+kwallet
+kwallet-pam
+polkit-kde-agent
+plasma-integration
+kdeconnect
+qt6-wayland
+qt6ct
+xdg-user-dirs
