@@ -9,9 +9,9 @@
 # Safe to re-run: plugins that are already enabled are skipped.
 set -euo pipefail
 
-# The tracked settings file holds [plugins] enabled. noctalia-sync keeps it in
-# step with what is enabled on this machine.
-SETTINGS="$HOME/.config/noctalia/gui/settings.toml"
+# The tracked config holds [plugins] enabled. noctalia-sync exports it to keep it
+# in step with what is enabled on this machine.
+SETTINGS="$HOME/.config/noctalia/config.toml"
 
 run() {
   if [ -n "${DRY_RUN:-}" ]; then
