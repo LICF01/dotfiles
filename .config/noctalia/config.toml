@@ -5,21 +5,22 @@ enabled = true
 center = []
 end = [
     "tray",
-    "network",
-    "bluetooth",
-    "volume",
-    "brightness",
-    "battery",
     "widget",
     "rate",
     "widget_2",
+    "volume",
+    "brightness",
+    "bluetooth",
+    "battery",
+    "network",
+    "keyboard_layout",
     "clock",
     "notifications"
 ]
 margin_ends = 0
 radius = 0
 shadow = false
-start = [ "control-center", "workspaces", "media" ]
+start = [ "control-center", "wallhaven", "workspaces", "media", "cpu", "ram" ]
 widget_spacing = 10
 
 [control_center]
@@ -107,7 +108,9 @@ enabled = [
     "noctalia/screen_recorder",
     "noctalia/translator",
     "noctalia/wallhaven",
-    "vinioli/currency-exchange"
+    "vinioli/currency-exchange",
+    "egno/vial_keymap",
+    "ayagmar/obs-control"
 ]
 
 [shell]
@@ -127,8 +130,8 @@ source = "builtin"
 wallpaper_scheme = "m3-content"
 
     [theme.templates]
-    builtin_ids = [ "btop", "ghostty", "kitty", "niri", "starship" ]
-    community_ids = [ "claude-code", "brave", "zen-browser", "micro", "steam", "fzf", "tmux" ]
+    builtin_ids = [ "btop", "niri", "starship" ]
+    community_ids = [ "claude-code", "brave", "zen-browser", "micro", "steam", "fzf" ]
 
 [wallpaper]
 directory = "/home/lucas/Pictures/wallpapers"
@@ -145,11 +148,29 @@ directory = "/home/lucas/Pictures/wallpapers"
     [wallpaper.monitors.eDP-1]
     path = "/home/lucas/Pictures/wallpapers/TokyoNight/wallhaven-9mxz8k-tokyonight.png"
 
+[widget.battery]
+show_label = false
+
+[widget.cpu]
+show_value = false
+
 [widget.media]
 hide_when_no_media = true
 
+[widget.network]
+show_label = false
+
+[widget.ram]
+show_value = false
+
 [widget.rate]
 type = "vinioli/currency-exchange:rate"
+
+[widget.volume]
+show_label = false
+
+[widget.wallhaven]
+type = "noctalia/wallhaven:wallhaven"
 
 [widget.widget]
 type = "oldirtty/color_picker:widget"
