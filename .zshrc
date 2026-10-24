@@ -1,7 +1,6 @@
 
 setopt autocd
 
-
 #######################################################################
 # Zinit's Installer
 #
@@ -42,6 +41,11 @@ zinit load zsh-users/zsh-completions
 zinit load zsh-users/zsh-syntax-highlighting
 
 
+# For claude to show the correct colors inside tmux
+if command -v tmux >/dev/null 2>&1; then
+  export COLORTERM=truecolor
+  export CLAUDE_CODE_TMUX_TRUECOLOR=1  # bypass Claude's $TMUX→256 clamp, keep tmux awareness (CC ≥ 2.1.83)
+fi
 
 
 ######################################################################
@@ -98,6 +102,9 @@ export FZF_DEFAULT_OPTS="--height 50% --layout=default --border --color=hl:#2dd4
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND='fd --type=d --strip-cwd-prefix --hidden --follow --exclude .git'
+
+# Tokyo Night fzf theme, only when fzf is installed
+(( $+commands[fzf] )) && source ~/.config/fzf/themes/tokyonight_night.sh
 
 
 # Use fd (https://github.com/sharkdp/fd) for listing path candidates.

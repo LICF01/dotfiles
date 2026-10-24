@@ -2,6 +2,10 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 and not set -q TMUX
   tmux new-session -A -s main
+
+  # Fixes claude themes colors inside tmux
+  set -gx COLORTERM truecolor 
+  set -gx CLAUDE_CODE_TMUX_TRUECOLOR 1  # bypass Claude's $TMUX→256 clamp, keep tmux awareness (CC ≥ 2.1.83)
 end
 
 # Removes the greeting message
@@ -89,6 +93,11 @@ set -x FZF_DEFAULT_OPTS " --height 50% --tmux center,80%,80% --layout=reverse --
 set -x FZF_DEFAULT_COMMAND 'fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
 set -x FZF_CTRL_T_OPTS "--preview 'bat --color=always --style=numbers --line-range :500 {}'"
 set -x FZF_ALT_C_OPTS "--preview '$EZA_WITH_DEFAULTS --tree {} | head -200'"
+
+# Tokyo Night fzf theme 
+if command -q fzf
+    source ~/.config/fzf/themes/tokyonight_night.fish
+end
 
 # Advanced customization of fzf options via _fzf_comprun function
 # - The first argument to the function is the name of the command.
