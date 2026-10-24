@@ -1,5 +1,0 @@
-config_version = 15
-
-[theme.templates]
-builtin_ids = [ "niri", "starship" ]
-community_ids = [ "brave", "zen-browser", "steam" ]

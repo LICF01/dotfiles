@@ -130,8 +130,8 @@ source = "builtin"
 wallpaper_scheme = "m3-content"
 
     [theme.templates]
-    builtin_ids = [ "btop", "niri", "starship" ]
-    community_ids = [ "claude-code", "brave", "zen-browser", "micro", "steam", "fzf" ]
+    builtin_ids = [ "niri", "starship" ]
+    community_ids = [ "brave", "zen-browser", "steam" ]
 
 [wallpaper]
 directory = "/home/lucas/Pictures/wallpapers"
